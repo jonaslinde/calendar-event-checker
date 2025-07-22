@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { Container, Typography, Box, Button, Input, Paper } from '@mui/material';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [fileName, setFileName] = useState<string | null>(null);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setFileName(file.name);
+      // Här kan vi senare läsa in filen och parsa den
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Container maxWidth="sm" sx={{ mt: 8 }}>
+      <Paper elevation={3} sx={{ p: 4 }}>
+        <Typography variant="h4" gutterBottom>
+          Ladda upp kalender (.ics)
+        </Typography>
+        <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
+          <Button variant="contained" component="label">
+            Välj fil
+            <Input
+              type="file"
+              inputProps={{ accept: '.ics,text/calendar' }}
+              onChange={handleFileChange}
+              sx={{ display: 'none' }}
+            />
+          </Button>
+          {fileName && (
+            <Typography variant="body1">Vald fil: {fileName}</Typography>
+          )}
+        </Box>
+      </Paper>
+    </Container>
+  );
 }
 
-export default App
+export default App;
