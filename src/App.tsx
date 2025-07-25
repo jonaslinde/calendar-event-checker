@@ -1,62 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Typography, Box, Button, Input, Paper, List, ListItem, ListItemText, Divider, Chip, Stack } from '@mui/material';
-import ical from 'ical.js';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { getCalendarNameFromIcs } from './utils/calendarName';
-
-// Typ för kalenderhändelse
-interface EventType {
-  summary: string;
-  description: string;
-  location: string;
-  start: string;
-  end: string;
-  calendarName: string;
-}
-
-interface CalendarFile {
-  name: string; // Visningsnamn för kalendern
-  events: EventType[];
-}
+import { useCalendars } from './hooks/useCalendars';
 
 function App() {
-  const [calendars, setCalendars] = useState<CalendarFile[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const { calendars, error, addCalendarFromIcs, removeCalendar } = useCalendars();
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      setError(null);
-      try {
-        const text = await file.text();
-        // Hämta kalendernamn från utils
-        const calName = getCalendarNameFromIcs(text, file.name);
-        // ical.js saknar TS-typer för getAllSubcomponents, därför any[]
-        const jcalData = ical.parse(text);
-        const comp = new ical.Component(jcalData);
-        const vevents = comp.getAllSubcomponents('vevent') as any[];
-        const parsedEvents: EventType[] = vevents.map((vevent) => {
-          const e = new ical.Event(vevent);
-          return {
-            summary: e.summary,
-            description: e.description,
-            location: e.location,
-            start: e.startDate ? e.startDate.toString() : '',
-            end: e.endDate ? e.endDate.toString() : '',
-            calendarName: calName,
-          };
-        });
-        setCalendars((prev) => [...prev, { name: calName, events: parsedEvents }]);
-      } catch {
-        setError('Kunde inte läsa/parsa filen. Kontrollera att det är en giltig .ics-fil.');
-      }
+      const text = await file.text();
+      addCalendarFromIcs(text, file.name);
     }
-    // Återställ input så att samma fil kan laddas upp igen om man vill
     event.target.value = '';
-  };
-
-  const handleRemoveCalendar = (name: string) => {
-    setCalendars((prev) => prev.filter((cal) => cal.name !== name));
   };
 
   // Slå ihop alla events från alla kalendrar
@@ -88,7 +44,7 @@ function App() {
                   <Chip
                     key={cal.name}
                     label={cal.name}
-                    onDelete={() => handleRemoveCalendar(cal.name)}
+                    onDelete={() => removeCalendar(cal.name)}
                     deleteIcon={<DeleteIcon />}
                     sx={{ m: 0.5 }}
                   />
