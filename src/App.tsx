@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, Typography, Box, Button, Input, Paper, List, ListItem, ListItemText, Divider, Chip, Stack } from '@mui/material';
 import ical from 'ical.js';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { getCalendarNameFromIcs } from './utils/calendarName';
 
 // Typ för kalenderhändelse
 interface EventType {
@@ -28,12 +29,11 @@ function App() {
       setError(null);
       try {
         const text = await file.text();
+        // Hämta kalendernamn från utils
+        const calName = getCalendarNameFromIcs(text, file.name);
+        // ical.js saknar TS-typer för getAllSubcomponents, därför any[]
         const jcalData = ical.parse(text);
         const comp = new ical.Component(jcalData);
-        // Hämta kalendernamn från VCALENDAR (X-WR-CALNAME eller NAME)
-        let calName = comp.getFirstPropertyValue('x-wr-calname') || comp.getFirstPropertyValue('name') || file.name;
-        if (typeof calName !== 'string') calName = file.name;
-        // ical.js saknar TS-typer för getAllSubcomponents, därför any[]
         const vevents = comp.getAllSubcomponents('vevent') as any[];
         const parsedEvents: EventType[] = vevents.map((vevent) => {
           const e = new ical.Event(vevent);
