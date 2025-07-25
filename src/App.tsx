@@ -14,7 +14,7 @@ interface EventType {
 }
 
 interface CalendarFile {
-  name: string;
+  name: string; // Visningsnamn för kalendern
   events: EventType[];
 }
 
@@ -30,6 +30,9 @@ function App() {
         const text = await file.text();
         const jcalData = ical.parse(text);
         const comp = new ical.Component(jcalData);
+        // Hämta kalendernamn från VCALENDAR (X-WR-CALNAME eller NAME)
+        let calName = comp.getFirstPropertyValue('x-wr-calname') || comp.getFirstPropertyValue('name') || file.name;
+        if (typeof calName !== 'string') calName = file.name;
         // ical.js saknar TS-typer för getAllSubcomponents, därför any[]
         const vevents = comp.getAllSubcomponents('vevent') as any[];
         const parsedEvents: EventType[] = vevents.map((vevent) => {
@@ -40,10 +43,10 @@ function App() {
             location: e.location,
             start: e.startDate ? e.startDate.toString() : '',
             end: e.endDate ? e.endDate.toString() : '',
-            calendarName: file.name,
+            calendarName: calName,
           };
         });
-        setCalendars((prev) => [...prev, { name: file.name, events: parsedEvents }]);
+        setCalendars((prev) => [...prev, { name: calName, events: parsedEvents }]);
       } catch {
         setError('Kunde inte läsa/parsa filen. Kontrollera att det är en giltig .ics-fil.');
       }
