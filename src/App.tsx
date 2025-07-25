@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Typography, Box, Button, Input, Paper, List, ListItem, ListItemText, Divider } from '@mui/material';
+import { Container, Typography, Box, Button, Input, Paper, List, ListItem, ListItemText, Divider, Chip, Stack } from '@mui/material';
 import ical from 'ical.js';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 // Typ för kalenderhändelse
 interface EventType {
@@ -9,22 +10,27 @@ interface EventType {
   location: string;
   start: string;
   end: string;
+  calendarName: string;
+}
+
+interface CalendarFile {
+  name: string;
+  events: EventType[];
 }
 
 function App() {
-  const [fileName, setFileName] = useState<string | null>(null);
-  const [events, setEvents] = useState<EventType[]>([]);
+  const [calendars, setCalendars] = useState<CalendarFile[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      setFileName(file.name);
       setError(null);
       try {
         const text = await file.text();
         const jcalData = ical.parse(text);
         const comp = new ical.Component(jcalData);
+        // ical.js saknar TS-typer för getAllSubcomponents, därför any[]
         const vevents = comp.getAllSubcomponents('vevent') as any[];
         const parsedEvents: EventType[] = vevents.map((vevent) => {
           const e = new ical.Event(vevent);
@@ -34,22 +40,31 @@ function App() {
             location: e.location,
             start: e.startDate ? e.startDate.toString() : '',
             end: e.endDate ? e.endDate.toString() : '',
+            calendarName: file.name,
           };
         });
-        setEvents(parsedEvents);
+        setCalendars((prev) => [...prev, { name: file.name, events: parsedEvents }]);
       } catch {
         setError('Kunde inte läsa/parsa filen. Kontrollera att det är en giltig .ics-fil.');
-        setEvents([]);
       }
     }
+    // Återställ input så att samma fil kan laddas upp igen om man vill
+    event.target.value = '';
   };
+
+  const handleRemoveCalendar = (name: string) => {
+    setCalendars((prev) => prev.filter((cal) => cal.name !== name));
+  };
+
+  // Slå ihop alla events från alla kalendrar
+  const allEvents = calendars.flatMap((cal) => cal.events);
 
   return (
     <Box sx={{ minHeight: '100vh', width: '100vw', bgcolor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Container maxWidth="sm" disableGutters>
         <Paper elevation={3} sx={{ p: 4 }}>
           <Typography variant="h4" gutterBottom align="center">
-            Ladda upp kalender (.ics)
+            Ladda upp en eller flera kalendrar (.ics)
           </Typography>
           <Box display="flex" flexDirection="column" alignItems="center" gap={2}>
             <Button variant="contained" component="label">
@@ -61,18 +76,28 @@ function App() {
                 sx={{ display: 'none' }}
               />
             </Button>
-            {fileName && (
-              <Typography variant="body1">Vald fil: {fileName}</Typography>
-            )}
             {error && (
               <Typography color="error">{error}</Typography>
             )}
+            {calendars.length > 0 && (
+              <Stack direction="row" spacing={1} flexWrap="wrap" justifyContent="center">
+                {calendars.map((cal) => (
+                  <Chip
+                    key={cal.name}
+                    label={cal.name}
+                    onDelete={() => handleRemoveCalendar(cal.name)}
+                    deleteIcon={<DeleteIcon />}
+                    sx={{ m: 0.5 }}
+                  />
+                ))}
+              </Stack>
+            )}
           </Box>
-          {events.length > 0 && (
+          {allEvents.length > 0 && (
             <Box mt={4}>
-              <Typography variant="h6" gutterBottom align="center">Händelser i kalendern:</Typography>
+              <Typography variant="h6" gutterBottom align="center">Alla händelser:</Typography>
               <List>
-                {events.map((event, idx) => (
+                {allEvents.map((event, idx) => (
                   <React.Fragment key={idx}>
                     <ListItem alignItems="flex-start">
                       <ListItemText
@@ -81,12 +106,13 @@ function App() {
                           <>
                             <Typography component="span" variant="body2">{event.start} - {event.end}</Typography><br />
                             {event.location && <><b>Plats:</b> {event.location}<br /></>}
-                            {event.description && <><b>Beskrivning:</b> {event.description}</>}
+                            {event.description && <><b>Beskrivning:</b> {event.description}<br /></>}
+                            <Chip label={event.calendarName} size="small" sx={{ mt: 1 }} />
                           </>
                         }
                       />
                     </ListItem>
-                    {idx < events.length - 1 && <Divider component="li" />}
+                    {idx < allEvents.length - 1 && <Divider component="li" />}
                   </React.Fragment>
                 ))}
               </List>
