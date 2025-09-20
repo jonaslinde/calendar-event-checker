@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getCalendarNameFromIcs } from './utils/calendarName';
+import { getCalendarNameFromIcs } from './calendarName';
 
 describe('Kalendernamn-extraktion', () => {
   it('hittar X-WR-CALNAME', () => {
