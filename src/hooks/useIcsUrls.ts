@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const STORAGE_KEY: string = "recentCalendarUrls"
 
 function loadFromLocalStorage(): string[] {
 try {
+        const isBrowser = typeof window !== "undefined" && "localStorage" in window;
+
+        if (!isBrowser) return [];
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return [];
             const parsed = JSON.parse(raw);
@@ -15,25 +18,6 @@ try {
 
 export function useIcsUrls() {
     const [urls, setUrls] = useState<string[]>(() => loadFromLocalStorage());
-
-    // Ladda sparade URL:er från localStorage vid start
-    // useEffect(() => {
-    //     const saved = localStorage.getItem(STORAGE_KEY);
-    //     if (saved) {
-    //         try {
-    //             setUrls(JSON.parse(saved));
-    //         } catch {
-    //             console.log("Något gick fel vid inläsning av historiska länkar!")
-    //         }
-    //     }
-    // }, []);
-
-    // // Spara URL:er till localStorage när de ändras
-    // useEffect(() => {
-    //     if (urls.length > 0) {
-    //       localStorage.setItem(STORAGE_KEY, JSON.stringify(urls));
-    //     }
-    // }, [urls]);
 
     // Lägg till URL i "senaste länkar" och spara i localStorage
     const addToRecentUrls = (url: string) => {
