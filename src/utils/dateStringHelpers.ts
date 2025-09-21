@@ -1,4 +1,4 @@
-export function formatDate(dateString: string){
+export function formatDate(dateString: string) {
     try {
         const date = new Date(dateString);
         if (isNaN(date.getTime())) return dateString;
@@ -8,7 +8,7 @@ export function formatDate(dateString: string){
     }
 };
 
-export function formatTime(dateString: string){
+export function formatTime(dateString: string) {
     try {
         const date = new Date(dateString);
         if (isNaN(date.getTime())) return dateString;
@@ -17,3 +17,11 @@ export function formatTime(dateString: string){
         return dateString;
     }
 };
+
+export function formatWeekday(dateString: string): string {
+    try {
+        return new Date(dateString).toLocaleDateString('sv-SE', { weekday: 'long' })
+    } catch {
+        return dateString
+    }
+}

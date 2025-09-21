@@ -23,9 +23,9 @@ function getNameFromComponent(comp: ical.Component, fallback: string): string {
   let calName = comp.getFirstPropertyValue('x-wr-calname') || comp.getFirstPropertyValue('name') || fallback;
   if (typeof calName !== 'string') calName = fallback;
   return calName;
-} 
+}
 
-function createEventFromIcalEvent(e: ical.Event, calendarName: string):CalendarEventType {
+function createEventFromIcalEvent(e: ical.Event, calendarName: string): CalendarEventType {
   return {
     summary: e.summary,
     description: e.description,
@@ -58,7 +58,7 @@ function formatIcs(text: string): string {
   if (!text.includes('BEGIN:VCALENDAR')) {
     throw new Error('Innehållet verkar inte vara en giltig .ics-kalender');
   }
-  
+
   // Formatera texten om den kommer som en lång rad
   if (!text.includes('\n')) {
     // Lägg till radbrytningar efter varje komponent
@@ -88,7 +88,7 @@ function formatIcs(text: string): string {
       .replace(/CALSCALE:/g, '\nCALSCALE:')
       .trim();
   }
-  
+
   return text;
 }
 
@@ -111,30 +111,30 @@ export function useCalendars() {
 
   const getColor = () => {
     return colors[calendars.length % colors.length]
-  
+
   }
   function parseIcsToCalendar(ics: string, fallbackName: string): CalendarType {
     const jcalData = ical.parse(ics);
     const comp = new ical.Component(jcalData);
+    const id = calendars.length;
     const name = getNameFromComponent(comp, fallbackName);
-    const color = getColor()
+    const color = getColor();
     const vevents = comp.getAllSubcomponents('vevent') as any[];
     const visible = true;
     const events: CalendarEventType[] = vevents.map((vevent) => {
       const e = new ical.Event(vevent);
       return createEventFromIcalEvent(e, name);
     });
-    return { name, events, color, visible };
+    return { name, events, color, visible, id };
   }
   function getCalendarColor(calendarName: string) {
     const index = calendars.findIndex(cal => cal.name === calendarName);
     return colors[index % colors.length];
-  };  
+  };
 
   function addCalendarFromIcs(ics: string, fallbackName: string) {
     try {
       const calendar = parseIcsToCalendar(formatIcs(ics), fallbackName);
-      calendar.color = getColor()
       setCalendars((prev) => [...prev, calendar]);
       setError(null);
     } catch {
@@ -150,46 +150,46 @@ export function useCalendars() {
     setCalendars((prev) => prev.filter((cal) => cal.name !== name));
   }
 
-  function updateCalendar(oldName: string, updatedCalendar: CalendarType) {
-    setCalendars((prev) => 
-      prev.map((cal) => cal.name === oldName ? updatedCalendar : cal)
+  function updateCalendar(name: string, updatedCalendar: CalendarType) {
+    setCalendars((prev) =>
+      prev.map((cal) => cal.name === name ? updatedCalendar : cal)
     );
   }
 
   function updateEvent(calendarName: string, eventIndex: number, updatedEvent: any) {
-    setCalendars((prev) => 
-      prev.map((cal) => 
-        cal.name === calendarName 
+    setCalendars((prev) =>
+      prev.map((cal) =>
+        cal.name === calendarName
           ? {
-              ...cal,
-              events: cal.events.map((event, index) => 
-                index === eventIndex ? { ...event, ...updatedEvent } : event
-              )
-            }
+            ...cal,
+            events: cal.events.map((event, index) =>
+              index === eventIndex ? { ...event, ...updatedEvent } : event
+            )
+          }
           : cal
       )
     );
   }
   function deleteEvent(calendarName: string, eventIndex: number) {
-    setCalendars((prev) => 
-      prev.map((cal) => 
-        cal.name === calendarName 
+    setCalendars((prev) =>
+      prev.map((cal) =>
+        cal.name === calendarName
           ? {
-              ...cal,
-              events: cal.events.filter((_, index) => index !== eventIndex)
-            }
+            ...cal,
+            events: cal.events.filter((_, index) => index !== eventIndex)
+          }
           : cal
       )
     );
   }
   function addEvent(calendarName: string, newEvent: any) {
-    setCalendars((prev) => 
-      prev.map((cal) => 
-        cal.name === calendarName 
+    setCalendars((prev) =>
+      prev.map((cal) =>
+        cal.name === calendarName
           ? {
-              ...cal,
-              events: [...cal.events, { ...newEvent, calendarName }]
-            }
+            ...cal,
+            events: [...cal.events, { ...newEvent, calendarName }]
+          }
           : cal
       )
     );
@@ -198,15 +198,15 @@ export function useCalendars() {
   function clearCalendars() {
     setCalendars([]);
     if (isBrowser) {
-      try { localStorage.removeItem(STORAGE_KEY); } catch {}
+      try { localStorage.removeItem(STORAGE_KEY); } catch { }
     }
   }
 
-  return { 
-    calendars, 
-    error, 
-    addCalendarFromIcs, 
-    addCalendar, 
+  return {
+    calendars,
+    error,
+    addCalendarFromIcs,
+    addCalendar,
     removeCalendar,
     updateCalendar,
     updateEvent,
