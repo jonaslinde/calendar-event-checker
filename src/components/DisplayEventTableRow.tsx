@@ -2,6 +2,7 @@ import { Box, TableCell, TableRow } from '@mui/material';
 import { CalendarChip } from './CalendarChip';
 import { WarningBox } from "./WarningBox";
 import { formatDate, formatTime, formatWeekday } from "./../utils/dateStringHelpers";
+import { CalendarChipList } from "./CalendarChipList";
 
 import type { DisplayEvent } from "../hooks/useDisplayEvents"
 
@@ -41,8 +42,9 @@ export function DisplayEventTableRow({ event, id }: Props) {
             <TableCell>{event.location}</TableCell>
             <TableCell>
                 <Box display="flex" alignItems="center" gap={1}>
+                    <CalendarChipList calendars={event.calendars} />
                     {event.calendars.map((calendar, idx) => (
-                        <CalendarChip id={`${key}-${idx}`} label={calendar.name} color={calendar.color} />
+                        <CalendarChip label={calendar.name} color={calendar.color} />
                     ))
                     }
                     {event.status != "ok" && (

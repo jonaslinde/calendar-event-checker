@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography, Box, ListItem, ListItemText, Divider } from '@mui/material';
 import { WarningBox } from "./WarningBox";
+import { CalendarChipList } from "./CalendarChipList";
 import { CalendarChip } from "./CalendarChip";
 import { formatDate, formatTime } from "./../utils/dateStringHelpers";
 import type { DisplayEvent } from "../hooks/useDisplayEvents"
@@ -19,6 +20,7 @@ export function DisplayEventItem({ event, id, color, divider = false }: Props) {
     return (
         <React.Fragment key={id}>
             <ListItem
+                key={'event-' + id}
                 alignItems="flex-start"
                 sx={{
                     borderLeft: borderLeft,
@@ -43,11 +45,7 @@ export function DisplayEventItem({ event, id, color, divider = false }: Props) {
                             {event.location && <><b>Plats:</b> {event.location}<br /></>}
                             {event.description && <><b>Beskrivning:</b> {event.description}<br /></>}
                             <Box sx={{ mt: 1, display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
-                                <>
-                                    {event.calendars.map((calendar, idx) => (
-                                        <CalendarChip label={calendar.name} color={calendar.color} />
-                                    ))}
-                                </>
+                                <CalendarChipList calendars={event.calendars} key={'calListItem-' + id} />
                             </Box>
                         </>
                     }
