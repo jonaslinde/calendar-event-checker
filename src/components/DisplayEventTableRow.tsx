@@ -26,7 +26,6 @@ export function DisplayEventTableRow({ event, id }: Props) {
 
     return (
         <TableRow
-            key={key}
             hover
             sx={{
                 borderLeft: borderLeft(event),
@@ -44,7 +43,7 @@ export function DisplayEventTableRow({ event, id }: Props) {
                 <Box display="flex" alignItems="center" gap={1}>
                     <CalendarChipList calendars={event.calendars} />
                     {event.calendars.map((calendar, idx) => (
-                        <CalendarChip label={calendar.name} color={calendar.color} />
+                        <CalendarChip label={calendar.name} color={calendar.color} key={`${id}-${calendar.name}-${idx}`} />
                     ))
                     }
                     {event.status != "ok" && (

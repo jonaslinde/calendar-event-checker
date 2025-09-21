@@ -1,22 +1,20 @@
-import { Container, Typography, Box, Button, Input, Paper, List, ListItem, ListItemText, Divider, Chip, Stack, TextField, Tabs, Tab, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, FormControlLabel, Checkbox, Select, MenuItem, FormControl, InputLabel, IconButton, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
-import { WarningBox } from "./WarningBox";
+import { Paper, Chip, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import { DisplayEventTableRow } from "./DisplayEventTableRow";
 
 import type { DisplayEvent, DisplayEventSortOrder, DisplayEventSortField } from "../hooks/useDisplayEvents"
-import { CalendarChip } from './CalendarChip';
 
 export type Props = {
     events: DisplayEvent[],
     sortOrder: DisplayEventSortOrder,
     sortField: DisplayEventSortField,
-    onSortChange: (field: DisplayEventSortField, order: DisplayEventSortOrder) => void;
+    onSortChange: (field: DisplayEventSortField) => void;
 }
 
 export function DisplayEventTable({ events, onSortChange, sortField, sortOrder }: Props) {
 
     const handleTableSortClick = (field: DisplayEventSortField, order: DisplayEventSortOrder) => {
         const newOrder: DisplayEventSortOrder = (order === "asc") ? "desc" : "asc"
-        onSortChange(field, order);
+        onSortChange(field);
     };
 
     function getDirection(field: DisplayEventSortField = "date"): DisplayEventSortOrder {
@@ -88,9 +86,7 @@ export function DisplayEventTable({ events, onSortChange, sortField, sortOrder }
                     {events.map((event, idx) => {
                         if (event.type === 'event') {
                             return (
-                                <>
-                                    <DisplayEventTableRow event={event} id={`event-${idx}`} />
-                                </>
+                                <DisplayEventTableRow event={event} id={`event-${idx}`} key={`event-${idx}`} />
                             );
                         } else {
                             // Ledig dag

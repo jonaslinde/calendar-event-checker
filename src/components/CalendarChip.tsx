@@ -8,6 +8,7 @@ export interface Props {
 export function CalendarChip({ label, color }: Props) {
     return (
         <Chip
+            component="span"
             label={label}
             size="small"
             sx={{

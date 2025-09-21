@@ -327,9 +327,8 @@ function App() {
                     {viewMode === 'list' && (
                       <Button
                         variant="outlined"
-                        onClick={handleSortToggle}
+                        onClick={handleTableSort("date")}
                       >
-                        {sortOrder === 'none' && 'Sortera'}
                         {sortOrder === 'asc' && '↑ Tidigast först'}
                         {sortOrder === 'desc' && '↓ Senast först'}
                       </Button>
@@ -340,142 +339,7 @@ function App() {
                 {viewMode === 'list' ? (
                   <DisplayEventList events={allEvents} />
                 ) : (
-                  <>
-                    <DisplayEventTable events={allEvents} sortField={tableSortField} sortOrder={sortOrder} onSortChange={() => handleTableSort('date')} />
-                    <TableContainer component={Paper} variant="outlined" sx={{ maxHeight: '70vh' }}>
-                      <Table stickyHeader>
-                        <TableHead>
-                          <TableRow>
-                            <TableCell>
-                              <TableSortLabel
-                                active={tableSortField === 'date'}
-                                direction={tableSortField === 'date' ? sortOrder : 'asc'}
-                                onClick={() => handleTableSort('date')}
-                              >
-                                Datum
-                              </TableSortLabel>
-                            </TableCell>
-                            <TableCell>Veckodag</TableCell>
-                            <TableCell>
-                              <TableSortLabel
-                                active={tableSortField === 'start'}
-                                direction={tableSortField === 'start' ? sortOrder : 'asc'}
-                                onClick={() => handleTableSort('start')}
-                              >
-                                Starttid
-                              </TableSortLabel>
-                            </TableCell>
-                            <TableCell>
-                              <TableSortLabel
-                                active={tableSortField === 'end'}
-                                direction={tableSortField === 'end' ? sortOrder : 'asc'}
-                                onClick={() => handleTableSort('end')}
-                              >
-                                Sluttid
-                              </TableSortLabel>
-                            </TableCell>
-                            <TableCell>
-                              <TableSortLabel
-                                active={tableSortField === 'summary'}
-                                direction={tableSortField === 'summary' ? sortOrder : 'asc'}
-                                onClick={() => handleTableSort('summary')}
-                              >
-                                Beskrivning
-                              </TableSortLabel>
-                            </TableCell>
-                            <TableCell>
-                              <TableSortLabel
-                                active={tableSortField === 'location'}
-                                direction={tableSortField === 'location' ? sortOrder : 'asc'}
-                                onClick={() => handleTableSort('location')}
-                              >
-                                Plats
-                              </TableSortLabel>
-                            </TableCell>
-                            <TableCell>Kalender</TableCell>
-                          </TableRow>
-                        </TableHead>
-                        <TableBody>
-                          {getTableData().map((item, idx) => {
-                            if (item.type === 'event') {
-                              const event: DisplayEvent = item.data;
-                              return (
-                                <TableRow
-                                  key={`event-${item.index}`}
-                                  hover
-                                  sx={{
-                                    borderLeft: `4px solid ${getCalendarColor(event.calendars[0])}`,
-                                    backgroundColor: item.isConflicting ? 'rgba(244, 67, 54, 0.1)' : 'inherit',
-                                    border: item.isConflicting ? '2px solid #f44336' : 'none',
-                                  }}
-                                >
-                                  <TableCell>{formatDate(event.startDate)}</TableCell>
-                                  <TableCell>
-                                    {new Date(event.startDate).toLocaleDateString('sv-SE', { weekday: 'long' })}
-                                  </TableCell>
-                                  <TableCell>{formatTime(event.startDate)}</TableCell>
-                                  <TableCell>{formatTime(event.endDate)}</TableCell>
-                                  <TableCell>{event.summary}</TableCell>
-                                  <TableCell>{event.location || '-'}</TableCell>
-                                  <TableCell>
-                                    <Box display="flex" alignItems="center" gap={1}>
-                                      {event.calendars.map(name => (
-                                        <Chip
-                                          label={name}
-                                          size="small"
-                                          sx={{
-                                            backgroundColor: getCalendarColor(name),
-                                            color: 'white',
-                                          }}
-                                        />
-                                      ))
-                                      }
-                                      {item.isConflicting && (
-                                        <WarningBox />
-                                      )}
-                                    </Box>
-
-                                  </TableCell>
-                                </TableRow>
-                              );
-                            } else {
-                              // Ledig dag
-                              const day = item.data;
-                              return (
-                                <TableRow
-                                  key={`freeday-${item.index}`}
-                                  hover
-                                  sx={{
-                                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
-                                    borderLeft: '4px solid #4caf50',
-                                  }}
-                                >
-                                  <TableCell>{formatDate(day.toISOString())}</TableCell>
-                                  <TableCell>
-                                    {day.toLocaleDateString('sv-SE', { weekday: 'long' })}
-                                  </TableCell>
-                                  <TableCell>-</TableCell>
-                                  <TableCell>-</TableCell>
-                                  <TableCell>Ledig dag</TableCell>
-                                  <TableCell>-</TableCell>
-                                  <TableCell>
-                                    <Chip
-                                      label="Ledig"
-                                      size="small"
-                                      sx={{
-                                        backgroundColor: '#4caf50',
-                                        color: 'white',
-                                      }}
-                                    />
-                                  </TableCell>
-                                </TableRow>
-                              );
-                            }
-                          })}
-                        </TableBody>
-                      </Table>
-                    </TableContainer>
-                  </>
+                  <DisplayEventTable events={allEvents} sortOrder={sortOrder} sortField={tableSortField} onSortChange={handleTableSort} />
                 )}
               </Box>
             )

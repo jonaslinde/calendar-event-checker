@@ -44,7 +44,7 @@ export function DisplayEventItem({ event, id, color, divider = false }: Props) {
                             </Typography><br />
                             {event.location && <><b>Plats:</b> {event.location}<br /></>}
                             {event.description && <><b>Beskrivning:</b> {event.description}<br /></>}
-                            <Box sx={{ mt: 1, display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+                            <Box component="span" sx={{ mt: 1, display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
                                 <CalendarChipList calendars={event.calendars} key={'calListItem-' + id} />
                             </Box>
                         </>
