@@ -7,14 +7,14 @@ export type Props = {
     events: DisplayEvent[],
     sortOrder: DisplayEventSortOrder,
     sortField: DisplayEventSortField,
-    onSortChange: (field: DisplayEventSortField) => void;
+    onSort: (field: DisplayEventSortField, order: DisplayEventSortOrder) => void;
 }
 
-export function DisplayEventTable({ events, onSortChange, sortField, sortOrder }: Props) {
+export function DisplayEventTable({ events, onSort, sortField, sortOrder }: Props) {
 
     const handleTableSortClick = (field: DisplayEventSortField, order: DisplayEventSortOrder) => {
         const newOrder: DisplayEventSortOrder = (order === "asc") ? "desc" : "asc"
-        onSortChange(field);
+        onSort(field, newOrder);
     };
 
     function getDirection(field: DisplayEventSortField = "date"): DisplayEventSortOrder {
@@ -24,9 +24,6 @@ export function DisplayEventTable({ events, onSortChange, sortField, sortOrder }
     function isActiveSortField(field: DisplayEventSortField): boolean {
         return field === sortField;
     }
-
-    console.log("Active sort field: " + sortField);
-    console.log("Active sort order: " + sortOrder);
 
     return (
         <TableContainer component={Paper} variant="outlined" sx={{ maxHeight: '70vh' }}>

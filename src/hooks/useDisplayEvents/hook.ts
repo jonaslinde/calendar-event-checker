@@ -104,7 +104,7 @@ const mergeByKey = (events: DisplayEvent[]): DisplayEvent[] => {
     for (const e of events) {
         console.log(e)
         const key = eventKey(e);
-        console.log("Key = " & key)
+        console.log("Key = " + key)
         const existing = map.get(key);
         if (existing) {
             console.log("key exists at ready! I should merge!")
@@ -140,7 +140,7 @@ function clearDisplayEvents(events: DisplayEvent[]): DisplayEvent[] {
     return []
 }
 
-function sortDisplayEvents(events: DisplayEvent[], sortField: DisplayEventSortField, sortOrder: SortOrder): DisplayEvent[] {
+function sortDisplayEvents(events: DisplayEvent[], sortField: DisplayEventSortField, sortOrder: DisplayEventSortOrder): DisplayEvent[] {
     return events.sort((a, b) => {
         let aValue: any, bValue: any;
 
@@ -236,6 +236,54 @@ function setEventStatuses(events: DisplayEvent[]): DisplayEvent[] {
 
     return updated;
 }
+const compareDisplayEvents = (aEvent: DisplayEvent, bEvent: DisplayEvent, field: DisplayEventSortField, order: DisplayEventSortOrder): number => {
+    let aValue: unknown, bValue: unknown;
+    console.log("Comparing...")
+    switch (field) {
+        case 'date':
+            aValue = new Date(aEvent.date);
+            bValue = new Date(bEvent.date);
+            if (aValue instanceof Date && isNaN(aValue.getTime())) aValue = new Date(0);
+            if (bValue instanceof Date && isNaN(bValue.getTime())) bValue = new Date(0);
+            break;
+        case 'start':
+            aValue = new Date(aEvent.startDate);
+            bValue = new Date(bEvent.startDate);
+            if (aValue instanceof Date && isNaN(aValue.getTime())) aValue = new Date(0);
+            if (bValue instanceof Date && isNaN(bValue.getTime())) bValue = new Date(0);
+            break;
+        case 'end':
+            aValue = new Date(aEvent.endDate);
+            bValue = new Date(bEvent.endDate);
+            if (aValue instanceof Date && isNaN(aValue.getTime())) aValue = new Date(0);
+            if (bValue instanceof Date && isNaN(bValue.getTime())) bValue = new Date(0);
+            break;
+        case 'summary':
+            aValue = aEvent.summary || '';
+            bValue = bEvent.summary || '';
+            break;
+        case 'location':
+            aValue = aEvent.location || '';
+            bValue = bEvent.location || '';
+            break;
+        default:
+            return 0;
+    }
+    console.log(typeof aValue)
+    console.log(typeof bValue)
+
+    if (typeof aValue === 'string' && typeof bValue === 'string') {
+        return order === 'asc'
+            ? aValue.localeCompare(bValue)    // asc
+            : bValue.localeCompare(aValue);   // desc
+    } else if (aValue instanceof Date && bValue instanceof Date) {
+        return order === 'asc'
+            ? aValue.getTime() - bValue.getTime()  // asc
+            : bValue.getTime() - aValue.getTime(); // desc
+    } else {
+        return 0;
+    }
+}
 
 export function useDisplayEvents() {
     const [displayEvents, setDisplayEvents] = useState<DisplayEvent[]>([]);
@@ -292,7 +340,8 @@ export function useDisplayEvents() {
     }
 
     const sort = (field: DisplayEventSortField, order: DisplayEventSortOrder) => {
-        setDisplayEvents(displayEvents)
+        console.log("I should sort now! Field:" + field + " Order: " + order);
+        setDisplayEvents(displayEvents.sort(compareDisplayEvents))
     }
 
     return {
