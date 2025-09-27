@@ -11,6 +11,8 @@ import type {
     DisplayEventSortOrder
 } from "./../hooks/useDisplayEvents";
 
+import type { OptionCheckBoxProps } from "./DisplayEventsShowOptions"
+
 type ViewModeType = "list" | "table" | "calendar";
 
 export type Props = {
@@ -35,7 +37,7 @@ export function DisplayEvents({ events }: Props) {
         setSortField(field);
     };
 
-    const optionSettings: OptionSetting[] = [{
+    const optionSettings: OptionCheckBoxProps[] = [{
         label: 'Visa lediga vardagar',
         checked: showFreeWeekdays,
         onChange: setshowFreeWeekdays
