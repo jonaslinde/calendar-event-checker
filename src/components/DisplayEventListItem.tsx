@@ -2,7 +2,6 @@ import React from 'react';
 import { Typography, Box, ListItem, ListItemText, Divider } from '@mui/material';
 import { WarningBox } from "./WarningBox";
 import { CalendarChipList } from "./CalendarChipList";
-import { CalendarChip } from "./CalendarChip";
 import { formatDate, formatTime } from "./../utils/dateStringHelpers";
 import type { DisplayEvent } from "../hooks/useDisplayEvents"
 
@@ -37,6 +36,7 @@ export function DisplayEventItem({ event, id, color, divider = false }: Props) {
                 )}
                 <ListItemText
                     primary={event.summary}
+                    slotProps={{ secondary: { component: 'div' } }}
                     secondary={
                         <>
                             <Typography component="span" variant="body2">

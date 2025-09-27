@@ -35,9 +35,7 @@ export function DisplayEventTable({ events, onSort, sortField, sortOrder }: Prop
                                 active={isActiveSortField("date")}
                                 direction={getDirection("date")}
                                 onClick={() => handleTableSortClick("date", sortOrder)}
-                            >
-                                Datum
-                            </TableSortLabel>
+                            >Datum</TableSortLabel>
                         </TableCell>
                         <TableCell>Veckodag</TableCell>
                         <TableCell>
@@ -45,36 +43,28 @@ export function DisplayEventTable({ events, onSort, sortField, sortOrder }: Prop
                                 active={isActiveSortField("start")}
                                 direction={getDirection('start')}
                                 onClick={() => handleTableSortClick('start', sortOrder)}
-                            >
-                                Starttid
-                            </TableSortLabel>
+                            >Starttid</TableSortLabel>
                         </TableCell>
                         <TableCell>
                             <TableSortLabel
                                 active={isActiveSortField("end")}
                                 direction={getDirection('end')}
                                 onClick={() => handleTableSortClick('end', sortOrder)}
-                            >
-                                Sluttid
-                            </TableSortLabel>
+                            >Sluttid</TableSortLabel>
                         </TableCell>
                         <TableCell>
                             <TableSortLabel
                                 active={isActiveSortField("summary")}
                                 direction={getDirection('summary')}
                                 onClick={() => handleTableSortClick('summary', sortOrder)}
-                            >
-                                Beskrivning
-                            </TableSortLabel>
+                            >Beskrivning</TableSortLabel>
                         </TableCell>
                         <TableCell>
                             <TableSortLabel
                                 active={isActiveSortField("location")}
                                 direction={getDirection('location')}
                                 onClick={() => handleTableSortClick('location', sortOrder)}
-                            >
-                                Plats
-                            </TableSortLabel>
+                            >Plats</TableSortLabel>
                         </TableCell>
                         <TableCell>Kalender</TableCell>
                     </TableRow>

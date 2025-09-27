@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { formatDate } from './utils';
 import type { DisplayEvent, DisplayEventSortOrder, DisplayEventSortField, DisplayEventStatus, DisplayEventType } from './types'
 
@@ -343,6 +343,18 @@ export function useDisplayEvents() {
         console.log("I should sort now! Field:" + field + " Order: " + order);
         setDisplayEvents(displayEvents.sort(compareDisplayEvents))
     }
+
+    // Pipeline steps
+    // --------------
+    // Sort
+    // Merge duplicates
+    // Add freedays (working + hollidays)
+    // Filter
+    const merged = useMemo(() => (merge ? mergeByKey(displayEvents) : displayEvents), [displayEvents, merge]);
+    const withStatus = useMemo(() => setEventStatuses(merged), [merged]);
+    const withFree = useMemo(() => addFreeDays(withStatus, opts), [withStatus, opts]);
+    const filtered = useMemo(() => filterByStatus(withFree, opts.showOnly), [withFree, opts.showOnly]);
+    const displayEvents = useMemo(() => sortDisplayEvents(filtered, sortField, sortOrder), [filtered, sortField, sortOrder]);
 
     return {
         displayEvents,

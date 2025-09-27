@@ -38,13 +38,13 @@ function createEventFromIcalEvent(e: ical.Event, calendarName: string): Calendar
 
 function loadCalendarsFromLocalStorage(): CalendarType[] {
   if (!isBrowser) return [];
+  console.log("Loading calendars...")
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw) as unknown;
 
     if (Array.isArray(parsed)) {
-      // Basic shape check
       return parsed.filter((c: any) => c && typeof c.name === 'string' && Array.isArray(c.events)) as CalendarType[];
     }
   } catch (e) {
@@ -93,26 +93,23 @@ function formatIcs(text: string): string {
 }
 
 export function useCalendars() {
+  console.log("useCalendars")
   const [calendars, setCalendars] = useState<CalendarType[]>(() => loadCalendarsFromLocalStorage());
   const [error, setError] = useState<string | null>(null);
-  console.log("useCalendars")
 
   useEffect(() => {
     if (!isBrowser) return;
-    console.log("Sparar " + calendars.length + " kalendrar till local storage")
+    console.log("Saving " + calendars.length + " calendars")
     try {
       const json = JSON.stringify(calendars);
-      console.log(json)
       localStorage.setItem(STORAGE_KEY, json);
     } catch (e) {
-      console.error("Kunde inte spara kalendrar:", e);
+      console.error("Error saving calendars : ", e);
     }
   }, [calendars]);
 
-  const getColor = () => {
-    return colors[calendars.length % colors.length]
+  const getColor = () => colors[calendars.length % colors.length];
 
-  }
   function parseIcsToCalendar(ics: string, fallbackName: string): CalendarType {
     const jcalData = ical.parse(ics);
     const comp = new ical.Component(jcalData);
