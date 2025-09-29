@@ -40,7 +40,7 @@ export function DisplayEventItem({ event, id, color, divider = false }: Props) {
                     secondary={
                         <>
                             <Typography component="span" variant="body2">
-                                {formatDate(event.startDate)} {formatTime(event.startDate)} - {formatDate(event.endDate)} {formatTime(event.endDate)}
+                                {formatDate(event.start)} {formatTime(event.start)} - {formatDate(event.end)} {formatTime(event.end)}
                             </Typography><br />
                             {event.location && <><b>Plats:</b> {event.location}<br /></>}
                             {event.description && <><b>Beskrivning:</b> {event.description}<br /></>}

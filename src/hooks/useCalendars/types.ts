@@ -2,9 +2,9 @@ export interface CalendarEventType {
   summary: string;
   description: string;
   location: string;
-  start: string;
-  end: string;
-  calendarName: string;
+  start: Date;
+  end: Date;
+  name: string;
 }
 
 export interface CalendarType {

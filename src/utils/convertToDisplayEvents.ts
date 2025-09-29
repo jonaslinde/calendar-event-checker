@@ -1,20 +1,21 @@
 import type { CalendarType, CalendarEventType } from "../hooks/useCalendars"
 import type { DisplayEvent } from '../hooks/useDisplayEvents'
+import { formatWeekday } from "./dateStringHelpers";
 
 export function convertCalendarEvent(
     calendarEvent: CalendarEventType,
     calendar: CalendarType
 ): DisplayEvent {
     return {
-        date: calendarEvent.start,
+        date: calendarEvent.start.toDateString(),
         type: 'event',
-        weekday: calendarEvent.start,
+        weekday: formatWeekday(calendarEvent.start),
         summary: calendarEvent.summary,
         description: calendarEvent.description,
         status: 'ok',
         location: calendarEvent.location,
-        startDate: calendarEvent.start,
-        endDate: calendarEvent.end,
+        start: calendarEvent.start.toISOString(),
+        end: calendarEvent.end.toISOString(),
         calendars: [{ name: calendar.name, color: calendar.color }],
     };
 }

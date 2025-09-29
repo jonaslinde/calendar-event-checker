@@ -1,5 +1,5 @@
 export type DisplayEventSortOrder = "asc" | "desc";
-export type DisplayEventSortField = "date" | "start" | "end" | "location" | "summary";
+export type DisplayEventSortField = "start" | "end" | "location" | "summary";
 export type DisplayEventStatus = "ok" | "conflict" | "same-day";
 export type DisplayEventType = "event" | "free-day";
 
@@ -11,10 +11,8 @@ export interface DisplayEvent {
   summary: string;
   description: string;
   location: string;
-  date: string;
-  weekday: string;
-  startDate: string;
-  endDate: string;
+  start: Date;
+  end: Date;
   calendars: DisplayCalendar[];
   type: DisplayEventType;
   status: DisplayEventStatus;

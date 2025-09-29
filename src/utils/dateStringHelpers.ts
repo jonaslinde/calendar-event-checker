@@ -1,27 +1,3 @@
-export function formatDate(dateString: string) {
-    try {
-        const date = new Date(dateString);
-        if (isNaN(date.getTime())) return dateString;
-        return date.toLocaleDateString('sv-SE');
-    } catch {
-        return dateString;
-    }
-};
-
-export function formatTime(dateString: string) {
-    try {
-        const date = new Date(dateString);
-        if (isNaN(date.getTime())) return dateString;
-        return date.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit' });
-    } catch {
-        return dateString;
-    }
-};
-
-export function formatWeekday(dateString: string): string {
-    try {
-        return new Date(dateString).toLocaleDateString('sv-SE', { weekday: 'long' })
-    } catch {
-        return dateString
-    }
-}
+export const formatDate = (date: Date): string => (!date || isNaN(date.getTime())) ? "" : date.toLocaleDateString('sv-SE');
+export const formatTime = (date: Date): string => (!date || isNaN(date.getTime())) ? "" : date.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit' })
+export const formatWeekday = (date: Date): string => (!date || isNaN(date.getTime())) ? "" : date.toLocaleDateString('sv-SE', { weekday: 'long' })

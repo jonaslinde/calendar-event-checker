@@ -31,9 +31,9 @@ export function DisplayEventTableRow({ event, id }: Props) {
             }}
         >
             <TableCell>{formatDate(event.date)}</TableCell>
-            <TableCell>{formatWeekday(event.startDate)}</TableCell>
-            <TableCell>{formatTime(event.startDate)}</TableCell>
-            <TableCell>{formatTime(event.endDate)}</TableCell>
+            <TableCell>{formatWeekday(event.start)}</TableCell>
+            <TableCell>{formatTime(event.start)}</TableCell>
+            <TableCell>{formatTime(event.end)}</TableCell>
             <TableCell>{event.summary}</TableCell>
             <TableCell>{event.location}</TableCell>
             <TableCell>
