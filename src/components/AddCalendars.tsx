@@ -18,7 +18,7 @@ import type {
 // import { useCalendars } from "./../hooks/useCalendars";
 import {
     useIcsUrls
-} from "./../hooks/useIcsUrls";
+} from "../hooks/useIcsUrls";
 
 type Props = {
     onNewIcsText: (icsText: string, source: string) => void;
@@ -52,7 +52,6 @@ export function AddCalendars({ onNewIcsText }: Props) {
     };
 
     const handleIcsTextSubmit = () => {
-        console.log("handleIcsTextSubmit")
         if (icsText.trim()) {
             onNewIcsText(icsText, 'Manuell');
             setIcsText('');
@@ -69,21 +68,22 @@ export function AddCalendars({ onNewIcsText }: Props) {
             try {
                 let response;
 
-                // Försök först direkt fetch
+                const controller = new AbortController();
+                const id = setTimeout(() => controller.abort(), 15000);
                 try {
                     response = await fetch(icsUrl, {
                         method: 'GET',
-                        headers: {
-                            'Accept': 'text/calendar, text/plain, */*',
-                        },
+                        headers: { Accept: 'text/calendar, text/plain, */*' },
                         mode: 'cors',
+                        signal: controller.signal
                     });
-                } catch (corsError) {
-                    // Om CORS misslyckas, använd en CORS-proxy
-                    console.log('CORS-fel, försöker med proxy...');
-                    console.log(corsError)
+                } catch {
                     const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(icsUrl)}`;
-                    response = await fetch(proxyUrl);
+                    response = await fetch(proxyUrl, {
+                        signal: controller.signal
+                    });
+                } finally {
+                    clearTimeout(id);
                 }
 
                 if (!response.ok) {
@@ -94,18 +94,23 @@ export function AddCalendars({ onNewIcsText }: Props) {
                 const urlParts = new URL(icsUrl);
                 const fallbackName = urlParts.pathname.split('/').pop() || 'Nedladdad kalender';
                 onNewIcsText(text, fallbackName);
-
-                // Lägg till URL till senaste listan
                 addToRecentUrls(icsUrl);
             } catch (err) {
-                console.error('Fel vid nedladdning:', err);
-                // Visa felmeddelandet till användaren
                 if (err instanceof Error) {
                     alert(`Fel vid nedladdning: ${err.message}`);
                 } else {
                     alert('Okänt fel vid nedladdning av kalendern');
                 }
             }
+        }
+    };
+
+    const isValidHttpUrl = (input: string) => {
+        try {
+            const u = new URL(input.trim());
+            return u.protocol === 'http:' || u.protocol === 'https:';
+        } catch {
+            return false;
         }
     };
 
@@ -162,14 +167,20 @@ export function AddCalendars({ onNewIcsText }: Props) {
             {tabValue === 2 && ( // Lägg till kalender via url
                 <Box display="flex" flexDirection="column" gap={3} sx={{ py: 2 }}>
                     <FormControl fullWidth>
-                        <InputLabel>Senaste länkar</InputLabel>
+                        <InputLabel id="recent-urls-label">Senaste länkar</InputLabel>
                         <Select
-                            value=""
+                            labelId="recent-urls-label"
+                            value={icsUrl}
                             onChange={handleSelectedUrlChange}
                             label="Senaste länkar"
+                            displayEmpty
+                            renderValue={(val) => val || 'Välj en tidigare länk'}
                         >
-                            {urls.map((url, index) => (
-                                <MenuItem key={index} value={url}>
+                            <MenuItem value="">
+                                <em>Välj en tidigare länk</em>
+                            </MenuItem>
+                            {urls.map((url) => (
+                                <MenuItem key={url} value={url}>
                                     <Box>
                                         <Typography variant="body2" noWrap>
                                             {url.length > 60 ? `${url.substring(0, 60)}...` : url}
@@ -190,7 +201,7 @@ export function AddCalendars({ onNewIcsText }: Props) {
                     <Button
                         variant="contained"
                         onClick={handleUrlSubmit}
-                        disabled={!icsUrl.trim()}
+                        disabled={!isValidHttpUrl(icsUrl)}
                         fullWidth
                         size="large"
                         sx={{ py: 1.5 }}
