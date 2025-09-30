@@ -1,15 +1,16 @@
 import { useState } from 'react';
 
 const STORAGE_KEY: string = "recentCalendarUrls"
+const MAX_RECENT = 20;
 
 function loadFromLocalStorage(): string[] {
-try {
+    try {
         const isBrowser = typeof window !== "undefined" && "localStorage" in window;
 
         if (!isBrowser) return [];
         const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return [];
-            const parsed = JSON.parse(raw);
+        const parsed = JSON.parse(raw);
         return Array.isArray(parsed) ? (parsed as string[]) : [];
     } catch {
         return [];
@@ -24,19 +25,20 @@ export function useIcsUrls() {
         const normalized = (url || "").trim();
         if (!normalized) return;
 
-        // Validera att det ser ut som en URL
         try {
-            // Om den inte är en giltig URL kastas ett fel
             new URL(normalized);
         } catch {
-            // Spara inte ogiltiga URL:er
             return;
         }
 
         setUrls((prev) => {
-            const next = [normalized, ...prev.filter((u) => u !== normalized)].slice(0, 20);
+            const next = [normalized, ...prev.filter((u) => u !== normalized)].slice(0, MAX_RECENT);
             // Spara direkt så listan finns kvar även om effekten inte hunnit köras
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+            } catch {
+                return prev;
+            }
             return next;
         });
     };
