@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { AddCalendars } from "./AddCalenders";
+import { AddCalendars } from "./AddCalendars";
 import { CalendarBox } from "./CalendarBox";
 import { useCalendars } from './../hooks/useCalendars';
 import type { CalendarType } from "./../hooks/useCalendars";
@@ -18,7 +18,6 @@ export function Calendars({ onUpdate }: Props) {
 
 
     useEffect(() => {
-        console.log("calendars har uppdaterats", calendars);
         onUpdate(calendars)
     }, [calendars, onUpdate]);
 
