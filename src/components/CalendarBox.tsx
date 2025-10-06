@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Typography, Box, Button, Chip, Stack, TextField, IconButton } from '@mui/material';
-import { useCalendars } from './../hooks/useCalendars';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 // Todo implement visibility, i.e. to be included or not in the displayed list of events
@@ -20,19 +19,18 @@ export function CalendarBox({ calendars, onUpdateCalendar, onDeleteCalendar }: P
     const [editingCalendar, setEditingCalendar] = useState<string | null>(null);
     const [newCalendarName, setNewCalendarName] = useState('');
     const handleSaveCalendarName = (oldName: string, newName: string) => {
-        if (newName.trim() && newName !== oldName) {
-            const calendar = calendars.find(cal => cal.name === oldName);
-            if (calendar) {
-                const updatedCalendar = {
-                    ...calendar,
-                    name: newName.trim(),
-                    events: calendar.events.map(event => ({
-                        ...event,
-                        calendarName: newName.trim()
-                    }))
-                };
-                onUpdateCalendar(oldName, updatedCalendar);
-            }
+        const next = newName.trim();
+        if (!next || next === oldName) { setEditingCalendar(null); return; }
+        if (calendars.some(c => c.name === next)) { setEditingCalendar(null); return; }
+
+        const calendar = calendars.find(cal => cal.name === oldName);
+        if (calendar) {
+            const updatedCalendar = {
+                ...calendar,
+                name: next,
+                events: calendar.events.map(event => ({ ...event, calendarName: next }))
+            };
+            onUpdateCalendar(oldName, updatedCalendar);
         }
         setEditingCalendar(null);
     };
@@ -51,16 +49,16 @@ export function CalendarBox({ calendars, onUpdateCalendar, onDeleteCalendar }: P
                             {editingCalendar === cal.name ? (
                                 <Box display="flex" alignItems="center" gap={1}>
                                     <TextField
+                                        autoFocus
                                         value={newCalendarName}
                                         onChange={(e) => setNewCalendarName(e.target.value)}
+                                        onKeyDown={(e) => {
+                                            if (e.key === 'Enter') handleSaveCalendarName(cal.name, newCalendarName);
+                                            if (e.key === 'Escape') setEditingCalendar(null);
+                                        }}
                                         size="small"
                                         variant="outlined"
-                                        sx={{
-                                            '& .MuiOutlinedInput-root': {
-                                                backgroundColor: 'white',
-                                                color: 'black',
-                                            }
-                                        }}
+                                        sx={{ '& .MuiOutlinedInput-root': { backgroundColor: 'white', color: 'black' } }}
                                     />
                                     <Button
                                         size="small"
