@@ -25,7 +25,7 @@ export function DisplayEvents({ events }: Props) {
     const [showFreeHolidays, setshowFreeHolidays] = useState(false);
     const [showConflictsOnly, setShowConflictsOnly] = useState(false);
     const [mergeDuplicates, setMergeDuplicates] = useState(false);
-    const [sortField, setSortField] = useState<DisplayEventSortField>("date");
+    const [sortField, setSortField] = useState<DisplayEventSortField>("start");
     const [sortOrder, setSortOrder] = useState<DisplayEventSortOrder>("asc");
 
     const viewToIndex = (mode: ViewModeType): number => (mode === "list") ? 0 : (mode === "table") ? 1 : 2

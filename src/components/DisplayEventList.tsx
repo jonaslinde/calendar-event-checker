@@ -1,5 +1,5 @@
-import { List, Button } from '@mui/material';
-import type { DisplayEvent, DisplayEventSortField, DisplayEventSortOrder } from "../hooks/useDisplayEvents"
+import { List } from '@mui/material';
+import type { DisplayEvent } from "../hooks/useDisplayEvents"
 import { DisplayEventItem } from "./DisplayEventListItem";
 
 export type Props = {

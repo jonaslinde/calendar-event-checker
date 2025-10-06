@@ -17,7 +17,7 @@ export function DisplayEventTable({ events, onSort, sortField, sortOrder }: Prop
         onSort(field, newOrder);
     };
 
-    function getDirection(field: DisplayEventSortField = "date"): DisplayEventSortOrder {
+    function getDirection(field: DisplayEventSortField = "start"): DisplayEventSortOrder {
         return field === sortField ? sortOrder : "asc"
     }
 
@@ -32,9 +32,9 @@ export function DisplayEventTable({ events, onSort, sortField, sortOrder }: Prop
                     <TableRow>
                         <TableCell>
                             <TableSortLabel
-                                active={isActiveSortField("date")}
-                                direction={getDirection("date")}
-                                onClick={() => handleTableSortClick("date", sortOrder)}
+                                active={isActiveSortField("start")}
+                                direction={getDirection("start")}
+                                onClick={() => handleTableSortClick("start", sortOrder)}
                             >Datum</TableSortLabel>
                         </TableCell>
                         <TableCell>Veckodag</TableCell>
@@ -70,43 +70,7 @@ export function DisplayEventTable({ events, onSort, sortField, sortOrder }: Prop
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {events.map((event, idx) => {
-                        if (event.type === 'event') {
-                            return (
-                                <DisplayEventTableRow event={event} id={`event-${idx}`} key={`event-${idx}`} />
-                            );
-                        } else {
-                            // Ledig dag
-                            const day = event.date;
-                            return (
-                                <TableRow
-                                    key={`freeday-${idx}`}
-                                    hover
-                                    sx={{
-                                        backgroundColor: 'rgba(76, 175, 80, 0.1)',
-                                        borderLeft: '4px solid #4caf50',
-                                    }}
-                                >
-                                    <TableCell>{event.date}</TableCell>
-                                    <TableCell>{event.weekday}</TableCell>
-                                    <TableCell>-</TableCell>
-                                    <TableCell>-</TableCell>
-                                    <TableCell>{event.summary}</TableCell>
-                                    <TableCell>-</TableCell>
-                                    <TableCell>
-                                        <Chip
-                                            label="Ledig"
-                                            size="small"
-                                            sx={{
-                                                backgroundColor: '#4caf50',
-                                                color: 'white',
-                                            }}
-                                        />
-                                    </TableCell>
-                                </TableRow>
-                            );
-                        }
-                    })}
+                    {events.map((event, idx) => (<DisplayEventTableRow event={event} id={`event-${idx}`} key={`event-${idx}`} />))}
                 </TableBody>
             </Table>
         </TableContainer >
