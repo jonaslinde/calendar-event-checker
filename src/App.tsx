@@ -4,19 +4,27 @@ import { Container, Typography, Box, Paper } from '@mui/material';
 import type {
   CalendarType,
 } from './hooks/useCalendars';
-import type {
-  DisplayEvent,
-} from './hooks/useDisplayEvents'
 
 import { Calendars } from "./components/Calendars";
 import { DisplayEvents } from "./components/DisplayEvents";
-import { convertAll } from "./utils/convertToDisplayEvents";
+import { convertAll as toDisplayEvents } from "./utils/convertToDisplayEvents";
+import { setEventStatuses } from './hooks/useDisplayEvents/utils';
+import type { DisplayEvent } from './hooks/useDisplayEvents';
 
 function App() {
   const [displayEvents, setDisplayEvents] = useState<DisplayEvent[]>([])
 
+  // TODO #1: Wire up conflict detection - Apply setEventStatuses to events
+  // TODO #4: Fix event status assignment - Call setEventStatuses on events
   const handleCalendarsUpdate = useCallback((calendars: CalendarType[]) => {
-    setDisplayEvents(convertAll(calendars));
+    const events = toDisplayEvents(calendars);
+    const withStatus = setEventStatuses(events);
+    setDisplayEvents(withStatus);
+  }, []);
+
+  // TODO #1: Wire up conflict detection - Implement filtering logic when showConflictsOnly is true
+  const handleShowConflictsOnly = useCallback((value: boolean) => {
+    console.log(value);
   }, []);
 
   return (
@@ -30,7 +38,7 @@ function App() {
             Jämför dina kalendrar, hitta krockar eller lediga tider
           </Typography>
           <Calendars onUpdate={handleCalendarsUpdate} />
-          <DisplayEvents events={displayEvents} />
+          <DisplayEvents events={displayEvents} onShowConflictsOnly={handleShowConflictsOnly} />
         </Paper>
       </Container>
     </Box>

@@ -1,81 +1,71 @@
 import { useState } from 'react';
-import { Box, Tabs, Tab } from '@mui/material';
-import { DisplayEventTable } from "./DisplayEventTable";
-import { DisplayEventList } from "./DisplayEventList";
+import { Box } from '@mui/material';
 import { DisplayEventsStatusBox } from "./DisplayEventsStatusBox";
 import { DisplayEventsShowOptions } from "./DisplayEventsShowOptions";
-
-import type {
-    DisplayEvent,
-    DisplayEventSortField,
-    DisplayEventSortOrder
-} from "./../hooks/useDisplayEvents";
+import { BigCalendar } from './BigCalendar';
+import type { DisplayEvent } from '../hooks/useDisplayEvents';
 
 import type { OptionCheckBoxProps } from "./DisplayEventsShowOptions"
 
-type ViewModeType = "list" | "table" | "calendar";
-
 export type Props = {
-    events: DisplayEvent[]
-}
+    events: DisplayEvent[];
+    onShowConflictsOnly?: (showConflictsOnly: boolean) => void;
+    onMergeDuplicates?: (mergeDuplicates: boolean) => void;
+};
 
-export function DisplayEvents({ events }: Props) {
-    const [viewMode, setViewMode] = useState<ViewModeType>('list');
-    const [showFreeWeekdays, setshowFreeWeekdays] = useState(false);
-    const [showFreeHolidays, setshowFreeHolidays] = useState(false);
+export function DisplayEvents({ events, onShowConflictsOnly, onMergeDuplicates }: Props) {
+    // TODO #3: Integrate free days calculation - Uncomment and wire up free weekdays/holidays display options
+    // const [showFreeWeekdays, setshowFreeWeekdays] = useState(false);
+    // const [showFreeHolidays, setshowFreeHolidays] = useState(false);
+    // TODO #1: Wire up conflict detection - Implement filtering logic when showConflictsOnly is true
     const [showConflictsOnly, setShowConflictsOnly] = useState(false);
+    // TODO #2: Implement duplicate merging - Apply mergeByKey logic when mergeDuplicates is true
     const [mergeDuplicates, setMergeDuplicates] = useState(false);
-    const [sortField, setSortField] = useState<DisplayEventSortField>("start");
-    const [sortOrder, setSortOrder] = useState<DisplayEventSortOrder>("asc");
 
-    const viewToIndex = (mode: ViewModeType): number => (mode === "list") ? 0 : (mode === "table") ? 1 : 2
-    const indexToView = (idx: number): ViewModeType => (idx === 0) ? "list" : (idx === 1) ? "table" : "calendar";
-
-    const handleSort = (field: DisplayEventSortField) => {
-        const newOrder: DisplayEventSortOrder = (sortOrder === "asc") ? "desc" : "asc"
-        setSortOrder(newOrder);
-        setSortField(field);
+    const handleShowConflictsOnly = (value: boolean) => {
+        setShowConflictsOnly(value);
+        onShowConflictsOnly?.(value);
     };
 
-    const optionSettings: OptionCheckBoxProps[] = [{
-        label: 'Visa lediga vardagar',
-        checked: showFreeWeekdays,
-        onChange: setshowFreeWeekdays
-    }, {
-        label: 'Visa lediga helgdagar',
-        checked: showFreeHolidays,
-        onChange: setshowFreeHolidays
-    }, {
-        label: 'Visa bara konflikter',
-        checked: showConflictsOnly,
-        onChange: setShowConflictsOnly
-    }, {
-        label: 'Slå ihop dubbletter',
-        checked: mergeDuplicates,
-        onChange: setMergeDuplicates
-    },]
+    const handleMergeDuplicates = (value: boolean) => {
+        setMergeDuplicates(value);
+        onMergeDuplicates?.(value);
+    }
+
+    const optionSettings: OptionCheckBoxProps[] = [
+        // TODO #3: Integrate free days calculation - Uncomment these options when implementing free days
+        // {
+        //     label: 'Visa lediga vardagar',
+        //     checked: showFreeWeekdays,
+        //     onChange: setshowFreeWeekdays
+        // },
+        // {
+        //     label: 'Visa lediga helgdagar',
+        //     checked: showFreeHolidays,
+        //     onChange: setshowFreeHolidays
+        // },
+        {
+            label: 'Visa bara konflikter',
+            checked: showConflictsOnly,
+            onChange: handleShowConflictsOnly
+        },
+        {
+            label: 'Slå ihop dubbletter',
+            checked: mergeDuplicates,
+            onChange: handleMergeDuplicates
+        },
+    ];
 
     return (
-        <>
-            {events.length > 0 && (
-                <Box mt={6}>
-                    <Tabs value={viewToIndex(viewMode)} onChange={(_, idx) => setViewMode(indexToView(idx))} centered sx={{ mb: 4 }}>
-                        <Tab label="Listvy" />
-                        <Tab label="Tabellvy" />
-                        <Tab label="Kalendervy" disabled />
-                    </Tabs>
-                    <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
-                        <DisplayEventsStatusBox events={events} />
-                        <DisplayEventsShowOptions optionSettings={optionSettings} />
-                    </Box>
-                    {viewMode === 'list' ? (
-                        <DisplayEventList events={events} onSort={handleSort} />
-                    ) : (
-                        <DisplayEventTable events={events} sortOrder={sortOrder} sortField={sortField} onSort={handleSort} />
-                    )}
-                </Box>
-            )
-            }
-        </>
+        <Box mt={6}>
+            <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
+                <DisplayEventsStatusBox events={events} />
+                <DisplayEventsShowOptions optionSettings={optionSettings} />
+            </Box>
+            {/* TODO #1: Wire up conflict detection - Filter events based on showConflictsOnly state */}
+            {/* TODO #2: Implement duplicate merging - Apply mergeByKey when mergeDuplicates is true */}
+            {/* TODO #5: Integrate alternative views - Consider using DisplayEventTable or DisplayEventList components */}
+            <BigCalendar events={events} agendaLength={90} />
+        </Box>
     );
 }

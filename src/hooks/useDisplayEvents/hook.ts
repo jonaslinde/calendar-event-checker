@@ -10,8 +10,8 @@ export function useDisplayEvents() {
     const [includeFreeWeekdays, setIncludeFreeWeekdays] = useState(false);
     const [includeFreeHolidays, setIncludeFreeHolidays] = useState(false);
     const [merge, setMerge] = useState(false);
-    const [showOnly, setShowOnly] = useState<'all' | 'conflict' | 'same-day' | 'not-ok'>('all');
-    //todo: add functionality to only show future events
+    const [showOnly, setShowOnly] = useState<'all' | 'conflict' | 'sameDay' | 'not-ok'>('all');
+    // TODO #7: Add future events filter - Implement functionality to only show future events
 
     const processedEvents = useMemo(() => {
         const merged = merge ? mergeByKey(displayEvents) : displayEvents;

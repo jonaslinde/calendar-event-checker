@@ -1,7 +1,4 @@
-import type { DisplayEvent, DisplayEventSortOrder, DisplayEventSortField } from './index'
-
-const earliestAllowedDate: Date = new Date('1900-01-01');
-const latestAllowedDate: Date = new Date('2100-01-01');
+import type { DisplayEvent, DisplayEventSortOrder, DisplayEventSortField, DisplayEventStatus } from './index'
 
 /** Locale-aware formatting helpers that accept Date or string */
 export function formatDate(value: Date | string) {
@@ -48,7 +45,7 @@ export const isSameDay = (event1: DisplayEvent, event2: DisplayEvent) => {
     );
 };
 
-/** Overlap check (assumes same-day already checked by caller if needed) */
+/** Overlap check (assumes sameDay already checked by caller if needed) */
 export const isOverlapping = (event1: DisplayEvent, event2: DisplayEvent) => {
     try {
         const start1 = event1.start instanceof Date ? event1.start : new Date(event1.start);
@@ -190,6 +187,7 @@ export const getFreeDays = (
     return free;
 };
 
+// TODO #1 & #4: Wire up conflict detection and fix event status assignment - This function exists and is now called in App.tsx
 export function setEventStatuses(events: DisplayEvent[]): DisplayEvent[] {
     // 1) Start with all "ok"
     const updated = events.map(ev => ({ ...ev, status: 'ok' as DisplayEventStatus }));
@@ -204,8 +202,8 @@ export function setEventStatuses(events: DisplayEvent[]): DisplayEvent[] {
                 updated[i].status = 'conflict';
                 updated[j].status = 'conflict';
             } else if (isSameDay(a, b)) {
-                if (updated[i].status === 'ok') updated[i].status = 'same-day';
-                if (updated[j].status === 'ok') updated[j].status = 'same-day';
+                if (updated[i].status === 'ok') updated[i].status = 'sameDay';
+                if (updated[j].status === 'ok') updated[j].status = 'sameDay';
             }
         }
     }

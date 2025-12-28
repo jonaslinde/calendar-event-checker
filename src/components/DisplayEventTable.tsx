@@ -3,6 +3,7 @@ import { DisplayEventTableRow } from "./DisplayEventTableRow";
 
 import type { DisplayEvent, DisplayEventSortOrder, DisplayEventSortField } from "../hooks/useDisplayEvents"
 
+// TODO #5: Integrate alternative views - This component exists but is not used. Integrate into DisplayEvents or remove if not needed.
 export type Props = {
     events: DisplayEvent[],
     sortOrder: DisplayEventSortOrder,

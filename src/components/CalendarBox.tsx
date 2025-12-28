@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Typography, Box, Button, Chip, Stack, TextField, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-// Todo implement visibility, i.e. to be included or not in the displayed list of events
+// TODO #6: Implement calendar visibility toggle - Use CalendarType.visible property to filter calendars from display
 // import VisibleIcon from "@mui/icons-material/Visibility";
 // import VisibleOffIcon from "@mui/icons-material/VisibilityOff"
 
@@ -45,7 +45,7 @@ export function CalendarBox({ calendars, onUpdateCalendar, onDeleteCalendar }: P
                 <Typography variant="h5" gutterBottom align="center" sx={{ mb: 3 }}>Kalendrar</Typography>
                 <Stack direction="row" spacing={1} flexWrap="wrap" justifyContent="center">
                     {calendars.map((cal) => (
-                        <Box key={cal.name} sx={{ m: 0.5, display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                        <Box key={cal.id} sx={{ m: 0.5, display: 'flex', alignItems: 'center', gap: 0.5 }}>
                             {editingCalendar === cal.name ? (
                                 <Box display="flex" alignItems="center" gap={1}>
                                     <TextField

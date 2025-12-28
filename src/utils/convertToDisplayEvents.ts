@@ -1,22 +1,27 @@
 import type { CalendarType, CalendarEventType } from "../hooks/useCalendars"
 import type { DisplayEvent } from '../hooks/useDisplayEvents'
-import { formatWeekday } from "./dateStringHelpers";
 
+// TODO #5: Integrate alternative views - This conversion utility exists but is not used in the main flow. 
+// Consider using this with DisplayEventTable/DisplayEventList components, or remove if not needed.
+// TODO #4: Fix event status assignment - Status is currently hardcoded to "ok", should receive computed status from setEventStatuses
 export function convertCalendarEvent(
     calendarEvent: CalendarEventType,
     calendar: CalendarType
 ): DisplayEvent {
     return {
-        date: calendarEvent.start.toDateString(),
-        type: 'event',
-        weekday: formatWeekday(calendarEvent.start),
+        // For react-big-calendar compatibility
+        title: calendarEvent.summary,  // Alias for summary
+        start: calendarEvent.start,
+        end: calendarEvent.end,
+        allDay: undefined,  // TODO: Detect from ICS (DATE vs DATETIME)
+
+        // For processing/analysis
         summary: calendarEvent.summary,
         description: calendarEvent.description,
-        status: 'ok',
         location: calendarEvent.location,
-        start: calendarEvent.start.toISOString(),
-        end: calendarEvent.end.toISOString(),
         calendars: [{ name: calendar.name, color: calendar.color }],
+        type: 'event',
+        status: 'ok',
     };
 }
 

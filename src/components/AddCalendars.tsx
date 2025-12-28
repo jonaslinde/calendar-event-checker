@@ -24,11 +24,6 @@ type Props = {
     onNewIcsText: (icsText: string, source: string) => void;
 }
 export function AddCalendars({ onNewIcsText }: Props) {
-    // const {  
-    //     // error, 
-    //     // addCalendarFromIcs,
-    //   } = useCalendars();
-
     const [tabValue, setTabValue] = useState(0);
     const [icsText, setIcsText] = useState('');
     const [icsUrl, setIcsUrl] = useState('');

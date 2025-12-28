@@ -1,6 +1,6 @@
 export type DisplayEventSortOrder = "asc" | "desc";
 export type DisplayEventSortField = "start" | "end" | "location" | "summary";
-export type DisplayEventStatus = "ok" | "conflict" | "same-day";
+export type DisplayEventStatus = "ok" | "conflict" | "sameDay";
 export type DisplayEventType = "event" | "free-day";
 
 export interface DisplayCalendar {
@@ -8,11 +8,16 @@ export interface DisplayCalendar {
   color: string;
 }
 export interface DisplayEvent {
-  summary: string;
-  description: string;
-  location: string;
+  // For react-big-calendar compatibility
+  title: string;              // Alias for summary (required by react-big-calendar)
   start: Date;
   end: Date;
+  allDay?: boolean;           // Optional for react-big-calendar (derived from ICS DATE vs DATETIME)
+
+  // For processing/analysis (original fields)
+  summary: string;            // Keep for backward compatibility and ICS mapping
+  description: string;
+  location: string;
   calendars: DisplayCalendar[];
   type: DisplayEventType;
   status: DisplayEventStatus;

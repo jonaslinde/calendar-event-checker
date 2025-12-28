@@ -6,8 +6,10 @@ import type { DisplayEvent } from '../types';
 // Hjälpare för att snabbt skapa DisplayEvent med rimliga default-värden
 function ev(partial: Partial<DisplayEvent> = {}): DisplayEvent {
     const now = new Date('2025-01-01T10:00:00Z');
+    const summary = partial.summary ?? '';
     return {
-        summary: '',
+        title: partial.title ?? summary,  // title defaults to summary
+        summary: summary,
         description: '',
         location: '',
         start: now,
@@ -343,8 +345,8 @@ describe('useDisplayEvents', () => {
                 expect(statuses).toEqual(['conflict', 'conflict']);
             });
         });
-        describe('same-day', () => {
-            it('Overlapping should not be same-day', () => {
+        describe('sameDay', () => {
+            it('Overlapping should not be sameDay', () => {
                 const { result } = renderHook(() => useDisplayEvents());
                 const d = new Date('2025-01-01T10:00:00Z');
                 // 10.00 -- 11.00
@@ -353,7 +355,7 @@ describe('useDisplayEvents', () => {
                 const e2 = ev({ summary: 'E2', start: new Date(d.getTime() + 30 * 60 * 1000), end: new Date(d.getTime() + 90 * 60 * 1000) });
                 act(() => {
                     result.current.setDisplayEvents([e1, e2]);
-                    result.current.setShowOnly('same-day');
+                    result.current.setShowOnly('sameDay');
                 });
                 expect(result.current.displayEvents.length).toBe(0);
             });
@@ -366,13 +368,13 @@ describe('useDisplayEvents', () => {
                 const e2 = ev({ summary: 'E2', start: new Date(d.getTime() + 120 * 60 * 1000), end: new Date(d.getTime() + 180 * 60 * 1000) });
                 act(() => {
                     result.current.setDisplayEvents([e1, e2]);
-                    result.current.setShowOnly('same-day');
+                    result.current.setShowOnly('sameDay');
                 });
                 expect(result.current.displayEvents.length).toBe(2);
             });
         });
         describe('not-ok', () => {
-            it('same-day should be not-ok', () => {
+            it('sameDay should be not-ok', () => {
                 const { result } = renderHook(() => useDisplayEvents());
                 const d = new Date('2025-01-01T10:00:00Z');
                 // 10.00 -- 11.00

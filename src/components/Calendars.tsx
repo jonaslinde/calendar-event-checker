@@ -17,6 +17,7 @@ export function Calendars({ onUpdate }: Props) {
         updateCalendar } = useCalendars();
 
 
+    // TODO #6: Implement calendar visibility toggle - Filter calendars by visible property before passing to onUpdate
     useEffect(() => {
         onUpdate(calendars)
     }, [calendars, onUpdate]);

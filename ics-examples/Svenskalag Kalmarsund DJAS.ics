@@ -1,0 +1,1466 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Svenskalag AB//Svenskalag kalender//SE
+X-PUBLISHED-TTL:PT1H
+X-WR-CALNAME;VALUE=TEXT:DJAS - FBC Kalmarsund
+CALSCALE:GREGORIAN
+X-WR-TIMEZONE:Europe/Stockholm
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Europe/Stockholm
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+TZNAME:CEST
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+TZNAME:CET
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260325T183000
+DTEND;TZID=Europe/Stockholm:20260325T203000
+DTSTAMP:20260325T173000Z
+UID:cal18473998-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260318T183000
+DTEND;TZID=Europe/Stockholm:20260318T203000
+DTSTAMP:20260318T173000Z
+UID:cal18473997-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260311T183000
+DTEND;TZID=Europe/Stockholm:20260311T203000
+DTSTAMP:20260311T173000Z
+UID:cal18473996-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260307T140000
+DTEND;TZID=Europe/Stockholm:20260307T160000
+DTSTAMP:20260307T130000Z
+UID:cal18671410-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 12:30\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Hovshaga Sporthall
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: Hovshaga AIF - FBC Kalmarsund (Juniorallsvenskan H DJ18) //
+  DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260304T183000
+DTEND;TZID=Europe/Stockholm:20260304T203000
+DTSTAMP:20260304T173000Z
+UID:cal18473995-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260228T160000
+DTEND;TZID=Europe/Stockholm:20260228T180000
+DTSTAMP:20260228T150000Z
+UID:cal18671409-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 14:30\n\nBemanning samlas en timme före
+  match.\nSek: Malva L\, Millie S\, Tuva A\nKiosk/entré/film: Izabelle F\,
+  Isabella O\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - IBK Lund/IBK Lund Elit (Juniorallsvenskan
+  H DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260225T183000
+DTEND;TZID=Europe/Stockholm:20260225T203000
+DTSTAMP:20260225T173000Z
+UID:cal18473994-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260218T183000
+DTEND;TZID=Europe/Stockholm:20260218T203000
+DTSTAMP:20260218T173000Z
+UID:cal18473993-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260215T160000
+DTEND;TZID=Europe/Stockholm:20260215T180000
+DTSTAMP:20260215T150000Z
+UID:cal18671408-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 14:30\n\nBemanning samlas en timme före
+  match.\nSek: Caitlyn B\, Ebba S\, Ella D\nKiosk/entré/film: Belma G\,
+  Ellie L\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - FBC Engelholm (Juniorallsvenskan H DJ18)
+  // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260211T183000
+DTEND;TZID=Europe/Stockholm:20260211T203000
+DTSTAMP:20260211T173000Z
+UID:cal18473992-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260204T183000
+DTEND;TZID=Europe/Stockholm:20260204T203000
+DTSTAMP:20260204T173000Z
+UID:cal18473991-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260128T183000
+DTEND;TZID=Europe/Stockholm:20260128T203000
+DTSTAMP:20260128T173000Z
+UID:cal18473990-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260125T133000
+DTEND;TZID=Europe/Stockholm:20260125T153000
+DTSTAMP:20260125T123000Z
+UID:cal18671407-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 12:00\n\nBemanning samlas en timme före
+  match.\nSek: Alicia J\, Anya S\, Tilda E\nKiosk/entré/film: Belma G\,
+  Ella D\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - Åstorp/Kvidinge IBS (Juniorallsvenskan H
+  DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260121T183000
+DTEND;TZID=Europe/Stockholm:20260121T203000
+DTSTAMP:20260121T173000Z
+UID:cal18473989-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260118T151500
+DTEND;TZID=Europe/Stockholm:20260118T171500
+DTSTAMP:20260118T141500Z
+UID:cal18671405-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 13:45\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Kirsebergs Sporthall 
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Match: Malmö FBC/Malmö FBC Utveckling - FBC Kalmarsund
+  (Juniorallsvenskan H DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260115T200000
+DTEND;TZID=Europe/Stockholm:20260115T220000
+DTSTAMP:20260115T190000Z
+UID:cal18671406-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 18:30\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:SBB Arena 
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: CL98IC - FBC Kalmarsund (Juniorallsvenskan H DJ18) // DJAS
+  - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260114T183000
+DTEND;TZID=Europe/Stockholm:20260114T203000
+DTSTAMP:20260114T173000Z
+UID:cal18473988-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20260107T183000
+DTEND;TZID=Europe/Stockholm:20260107T203000
+DTSTAMP:20260107T173000Z
+UID:cal18473987-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251231T183000
+DTEND;TZID=Europe/Stockholm:20251231T203000
+DTSTAMP:20251231T173000Z
+UID:cal18473986-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251224T183000
+DTEND;TZID=Europe/Stockholm:20251224T203000
+DTSTAMP:20251224T173000Z
+UID:cal18473985-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251220T163000
+DTEND;TZID=Europe/Stockholm:20251220T183000
+DTSTAMP:20251220T153000Z
+UID:cal18671404-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 15:00\n\nBemanning samlas en timme före
+  match.\nSek: Malva L\, Isabella O\, Tilda E\nKiosk/entré/film: Izabelle
+  F\, Millie S\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - Värnamo IK (Juniorallsvenskan H DJ18) //
+  DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251217T183000
+DTEND;TZID=Europe/Stockholm:20251217T203000
+DTSTAMP:20251217T173000Z
+UID:cal18473984-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251213T171500
+DTEND;TZID=Europe/Stockholm:20251213T191500
+DTSTAMP:20251213T161500Z
+UID:cal18671397-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 15:45\n\nBemanning samlas en timme före
+  match.\nSek: Alicia J\, Tinke K\, Tuva A\nKiosk/entré/film: Ellie L\,
+  Millie S\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - Malmö FBC/Malmö FBC Utveckling
+  (Juniorallsvenskan H DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251210T183000
+DTEND;TZID=Europe/Stockholm:20251210T203000
+DTSTAMP:20251210T173000Z
+UID:cal18473983-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251205T193000
+DTEND;TZID=Europe/Stockholm:20251205T213000
+DTSTAMP:20251205T183000Z
+UID:cal18671403-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 18:00\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Fortnox Arena A-hall
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: Växjö IBK Utveckling/Växjö IBK - FBC Kalmarsund
+  (Juniorallsvenskan H DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251203T183000
+DTEND;TZID=Europe/Stockholm:20251203T203000
+DTSTAMP:20251203T173000Z
+UID:cal18473982-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251129T160000
+DTEND;TZID=Europe/Stockholm:20251129T180000
+DTSTAMP:20251129T150000Z
+UID:cal18671402-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 14:30\n\nBemanning samlas en timme före
+  match.\nSek: Alicia J\, Anya S\, Belma G\nKiosk/entré/film: Caitlyn B\,
+  Ebba S\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - Hovshaga AIF (Juniorallsvenskan H DJ18) //
+  DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251126T183000
+DTEND;TZID=Europe/Stockholm:20251126T203000
+DTSTAMP:20251126T173000Z
+UID:cal18473981-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251123T144500
+DTEND;TZID=Europe/Stockholm:20251123T164500
+DTSTAMP:20251123T134500Z
+UID:cal18671401-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 13:15\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Lerbäckshallen A 
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: IBK Lund/IBK Lund Elit - FBC Kalmarsund (Juniorallsvenskan
+  H DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251119T183000
+DTEND;TZID=Europe/Stockholm:20251119T203000
+DTSTAMP:20251119T173000Z
+UID:cal18473980-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251115T144500
+DTEND;TZID=Europe/Stockholm:20251115T164500
+DTSTAMP:20251115T134500Z
+UID:cal18671400-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 13:15\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Kungsgårdshallen 
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Engelholm - FBC Kalmarsund (Juniorallsvenskan H DJ18)
+  // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251112T183000
+DTEND;TZID=Europe/Stockholm:20251112T203000
+DTSTAMP:20251112T173000Z
+UID:cal18473979-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251105T183000
+DTEND;TZID=Europe/Stockholm:20251105T203000
+DTSTAMP:20251105T173000Z
+UID:cal18473978-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251029T183000
+DTEND;TZID=Europe/Stockholm:20251029T203000
+DTSTAMP:20251029T173000Z
+UID:cal18473977-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251026T160000
+DTEND;TZID=Europe/Stockholm:20251026T180000
+DTSTAMP:20251026T150000Z
+UID:cal18671399-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 14:30\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Arena Åstorp 
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: Åstorp/Kvidinge IBS - FBC Kalmarsund (Juniorallsvenskan H
+  DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251022T191500
+DTEND;TZID=Europe/Stockholm:20251022T211500
+DTSTAMP:20251022T171500Z
+UID:cal18671398-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 17:45\n\nBemanning samlas en timme före
+  match.\nSek: Anya S\, Magda G\, Tilda E\nKiosk/entré/film: Lova-Lee H\,
+  Neomi D\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - CL98IC (Juniorallsvenskan H DJ18) // DJAS
+  - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251015T183000
+DTEND;TZID=Europe/Stockholm:20251015T203000
+DTSTAMP:20251015T163000Z
+UID:cal18473975-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251008T183000
+DTEND;TZID=Europe/Stockholm:20251008T203000
+DTSTAMP:20251008T163000Z
+UID:cal18473974-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:30\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20251001T183000
+DTEND;TZID=Europe/Stockholm:20251001T203000
+DTSTAMP:20251001T163000Z
+UID:cal18473973-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:30\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250927T154500
+DTEND;TZID=Europe/Stockholm:20250927T174500
+DTSTAMP:20250927T134500Z
+UID:cal18671396-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 14:15\n\nDags för säsongens första
+  bortamatch!\n\nBuss avgår från ÖBC 11:30 och SBB 11:50. \nEgen mat på
+  ditvägen och på vägen hem kommer det finnas möjlighet att köpa mat om man
+  vill. Micro finns på bussen. \n\n3 poäng ska in på kontot så förbered er
+  efter bästa förmåga.\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Park Arena 
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Match: Värnamo IK - FBC Kalmarsund (Juniorallsvenskan H DJ18) //
+  DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250924T183000
+DTEND;TZID=Europe/Stockholm:20250924T203000
+DTSTAMP:20250924T163000Z
+UID:cal18473972-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:30\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250916T193000
+DTEND;TZID=Europe/Stockholm:20250916T213000
+DTSTAMP:20250916T173000Z
+UID:cal18671395-91755@svenskalag.se
+CREATED:20250822T163129Z
+DESCRIPTION:Samling: kl 18:00\n\nBemanning samlas en timme före
+  match.\nSek: Caitlyn B\, Ebba S\, Malva L\nKiosk/entré/film: Isabella O\,
+  Izabelle F\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250822T163129Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - Växjö IBK Utveckling/Växjö IBK
+  (Juniorallsvenskan H DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250914T103000
+DTEND;TZID=Europe/Stockholm:20250914T130000
+DTSTAMP:20250914T083000Z
+UID:cal18831996-91755@svenskalag.se
+CREATED:20250905T110410Z
+DESCRIPTION:Samling: kl 10:30\n\nSamlas 10:30 i konferensrummet för möte
+  och genomgång. därefter ombyte och träning. \n\nTa med
+  energipåfyllnad!!\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250905T110410Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Träning // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250910T183000
+DTEND;TZID=Europe/Stockholm:20250910T203000
+DTSTAMP:20250910T163000Z
+UID:cal18473970-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:30\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250903T183000
+DTEND;TZID=Europe/Stockholm:20250903T203000
+DTSTAMP:20250903T163000Z
+UID:cal18473969-91755@svenskalag.se
+CREATED:20250809T074352Z
+DESCRIPTION:Samling: kl 18:15\n\nKom i god tid så ni är ombytta och helt
+  klara att starta igång på utsatt tid. \nVi inleder med en genomgång och
+  därefter uppvärmning utomhus så att vi är klara när vi får halltiden
+  19:00. Så tänk på att ha med er ute skor och ev överdragskläder om vädret
+  kräver. \n\nTänk på att få med er vatten/sportdryck och någon frukt\,
+  bars\, proteinshake eller liknande för att direkt efter träningen fylla
+  på med energi.\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250809T074352Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250416T190000
+DTEND;TZID=Europe/Stockholm:20250416T203000
+DTSTAMP:20250416T170000Z
+UID:cal16496354-91755@svenskalag.se
+CREATED:20240830T085030Z
+DESCRIPTION:Samling: kl 19:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085030Z
+LOCATION:Torslundahallen
+SEQUENCE:5
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250326T190000
+DTEND;TZID=Europe/Stockholm:20250326T203000
+DTSTAMP:20250326T180000Z
+UID:cal16496351-91755@svenskalag.se
+CREATED:20240830T085030Z
+DESCRIPTION:Samling: kl 19:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085030Z
+LOCATION:Torslundahallen
+SEQUENCE:6
+STATUS:CONFIRMED
+SUMMARY:Voluntary träning DJAS/D1 // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250309T120000
+DTEND;TZID=Europe/Stockholm:20250309T120500
+DTSTAMP:20250309T110000Z
+UID:cal17612917-91755@svenskalag.se
+CREATED:20250305T080137Z
+DESCRIPTION:Samling: kl 12:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20250305T080137Z
+LOCATION:Online
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Kalmarsund cup 2025 - just voting // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250307T190000
+DTEND;TZID=Europe/Stockholm:20250307T210000
+DTSTAMP:20250307T180000Z
+UID:cal16531112-91755@svenskalag.se
+CREATED:20240902T223741Z
+DESCRIPTION:Samling: kl 17:45\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240902T223741Z
+LOCATION:FPC Hisingstorpshallen\, Myran
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: Jönköpings IK/Hovslätts IK - FBC Kalmarsund
+  (Juniorallsvenskan F DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250306T200000
+DTEND;TZID=Europe/Stockholm:20250306T213000
+DTSTAMP:20250306T190000Z
+UID:cal16496348-91755@svenskalag.se
+CREATED:20240830T085030Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085030Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250302T150000
+DTEND;TZID=Europe/Stockholm:20250302T170000
+DTSTAMP:20250302T140000Z
+UID:cal16496070-91755@svenskalag.se
+CREATED:20240830T082847Z
+DESCRIPTION:Samling: kl 13:30\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T082847Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - Växjö IBK Utveckling/Växjö IBK
+  (Juniorallsvenskan F DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250226T190000
+DTEND;TZID=Europe/Stockholm:20250226T203000
+DTSTAMP:20250226T180000Z
+UID:cal16496347-91755@svenskalag.se
+CREATED:20240830T085030Z
+DESCRIPTION:Samling: kl 18:45\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085030Z
+LOCATION:Torslundahallen
+SEQUENCE:5
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250219T190000
+DTEND;TZID=Europe/Stockholm:20250219T203000
+DTSTAMP:20250219T180000Z
+UID:cal16496346-91755@svenskalag.se
+CREATED:20240830T085030Z
+DESCRIPTION:Samling: kl 18:45\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085030Z
+LOCATION:Torslundahallen
+SEQUENCE:5
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250216T143000
+DTEND;TZID=Europe/Stockholm:20250216T163000
+DTSTAMP:20250216T133000Z
+UID:cal16496069-91755@svenskalag.se
+CREATED:20240830T082847Z
+DESCRIPTION:Samling: kl 13:15\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T082847Z
+LOCATION:Vasa Arena 
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: Linköping IBK Ungdom/Bergs IK - FBC Kalmarsund
+  (Juniorallsvenskan F DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250212T190000
+DTEND;TZID=Europe/Stockholm:20250212T203000
+DTSTAMP:20250212T180000Z
+UID:cal16496345-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 18:45\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:4
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250206T200000
+DTEND;TZID=Europe/Stockholm:20250206T213000
+DTSTAMP:20250206T190000Z
+UID:cal16496344-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250129T190000
+DTEND;TZID=Europe/Stockholm:20250129T203000
+DTSTAMP:20250129T180000Z
+UID:cal16496343-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 18:30\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:4
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250126T163000
+DTEND;TZID=Europe/Stockholm:20250126T183000
+DTSTAMP:20250126T153000Z
+UID:cal16496068-91755@svenskalag.se
+CREATED:20240830T082847Z
+DESCRIPTION:Samling: kl 15:15\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T082847Z
+LOCATION:Norrahammars Sporthall 
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: Fagerhult Habo IBK Ungdom - FBC Kalmarsund
+  (Juniorallsvenskan F DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250123T200000
+DTEND;TZID=Europe/Stockholm:20250123T213000
+DTSTAMP:20250123T190000Z
+UID:cal16496342-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250118T160000
+DTEND;TZID=Europe/Stockholm:20250118T180000
+DTSTAMP:20250118T150000Z
+UID:cal16496067-91755@svenskalag.se
+CREATED:20240830T082847Z
+DESCRIPTION:Samling: kl 14:30\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T082847Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - Värnamo IK (Juniorallsvenskan F DJ18) //
+  DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250115T190000
+DTEND;TZID=Europe/Stockholm:20250115T203000
+DTSTAMP:20250115T180000Z
+UID:cal16496341-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 18:30\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:4
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250112T160000
+DTEND;TZID=Europe/Stockholm:20250112T180000
+DTSTAMP:20250112T150000Z
+UID:cal16496066-91755@svenskalag.se
+CREATED:20240830T082847Z
+DESCRIPTION:Samling: kl 14:45\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T082847Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - Hjulsbro IK (Juniorallsvenskan F DJ18) //
+  DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20250108T190000
+DTEND;TZID=Europe/Stockholm:20250108T203000
+DTSTAMP:20250108T180000Z
+UID:cal16496340-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 18:30\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:4
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241220T193000
+DTEND;TZID=Europe/Stockholm:20241220T213000
+DTSTAMP:20241220T183000Z
+UID:cal16496065-91755@svenskalag.se
+CREATED:20240830T082847Z
+DESCRIPTION:Samling: kl 18:00\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T082847Z
+LOCATION:SBB Arena 
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Match: CL98IC - FBC Kalmarsund (Juniorallsvenskan F DJ18) // DJAS
+  - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241219T200000
+DTEND;TZID=Europe/Stockholm:20241219T213000
+DTSTAMP:20241219T190000Z
+UID:cal16496337-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241212T200000
+DTEND;TZID=Europe/Stockholm:20241212T213000
+DTSTAMP:20241212T190000Z
+UID:cal16496336-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241208T120000
+DTEND;TZID=Europe/Stockholm:20241208T200000
+DTSTAMP:20241208T110000Z
+UID:cal17031713-91755@svenskalag.se
+CREATED:20241203T101556Z
+DESCRIPTION:Samling: kl 12:00\n\nHej\,\n\nVi tränare har tillsammans med
+  Karen funderat på hur vi kan utveckla träningsmiljön utifrån den vision
+  om elitförberedelser som presenterades i början av säsongen och som vi
+  hittills\, i min mening\, inte har lyckats leva upp till. Jag tror att
+  med den information vi nu har och som gett oss ökad förståelse för
+  varandra\, plus att vi nu är det antal som krävs\, så är vi redo att ta
+  nästa steg i att utveckla träningsmiljön.\n\nJag har några förslag som
+  jag skulle vilja att vi börjar med direkt efter nyår\, men det beror på
+  om vi kan anpassa våra träningstider.\n\nDenna kallelse är ”endast” en
+  omröstning för att ta reda på hur många som förändringarna fungerar för
+  eller inte\, eftersom du har fått kallelsen är du en av dem som vi vill
+  ska vara en del av JAS-gruppen.\n\nNya JAS-träningstider:\nOnsdagar\, kl
+  19:00-20:30 i Torslunda\nTorsdagar\, Skills-träning kl 20:00-21:30 i
+  Torslunda\n\nIdéer:\n- JAS-laget blir en stängd träningsgrupp\, dvs en
+  grupp och inte längre "yngre och äldre"\n- Minst tre träningar i veckan
+  för JAS-spelare\n- Skills-träningen är öppen för alla från 09/10 till
+  Div1\, för JAS-laget är den obligatorisk. (Dock kommer vi ha individuella
+  samtal med er för att se över er totala belastning) \n- Möjlighet att
+  vara med på Div1-träningar\n- Mer fokus på er individuella
+  utveckling\n\nJag kommer också vilja träffa er individuellt för att
+  diskutera vad ni behöver för att vi ska kunna stödja er i er utveckling
+  under resten av säsongen och för att få höra era tankar om
+  förslaget.\n\n/Jakub\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20241203T101556Z
+LOCATION:Omröstning hemifrån
+SEQUENCE:10
+STATUS:CONFIRMED
+SUMMARY:Nytt träningsschema/upplägg från nyår // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241205T200000
+DTEND;TZID=Europe/Stockholm:20241205T213000
+DTSTAMP:20241205T190000Z
+UID:cal16496335-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241201T143000
+DTEND;TZID=Europe/Stockholm:20241201T163000
+DTSTAMP:20241201T133000Z
+UID:cal16496064-91755@svenskalag.se
+CREATED:20240830T082847Z
+DESCRIPTION:Samling: kl 13:15\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T082847Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - Hovshaga AIF (Juniorallsvenskan F DJ18) //
+  DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241128T200000
+DTEND;TZID=Europe/Stockholm:20241128T213000
+DTSTAMP:20241128T190000Z
+UID:cal16496334-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241123T160000
+DTEND;TZID=Europe/Stockholm:20241123T180000
+DTSTAMP:20241123T150000Z
+UID:cal16496063-91755@svenskalag.se
+CREATED:20240830T082847Z
+DESCRIPTION:Samling: kl 14:45\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T082847Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - Jönköpings IK/Hovslätts IK
+  (Juniorallsvenskan F DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241121T200000
+DTEND;TZID=Europe/Stockholm:20241121T213000
+DTSTAMP:20241121T190000Z
+UID:cal16496333-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241116T120000
+DTEND;TZID=Europe/Stockholm:20241116T140000
+DTSTAMP:20241116T110000Z
+UID:cal16496062-91755@svenskalag.se
+CREATED:20240830T082847Z
+DESCRIPTION:Samling: kl 10:45\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T082847Z
+LOCATION:Fortnox Arena A-hall
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: Växjö IBK Utveckling/Växjö IBK - FBC Kalmarsund
+  (Juniorallsvenskan F DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241114T200000
+DTEND;TZID=Europe/Stockholm:20241114T213000
+DTSTAMP:20241114T190000Z
+UID:cal16496332-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241107T200000
+DTEND;TZID=Europe/Stockholm:20241107T213000
+DTSTAMP:20241107T190000Z
+UID:cal16496331-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241103T163000
+DTEND;TZID=Europe/Stockholm:20241103T183000
+DTSTAMP:20241103T153000Z
+UID:cal16496061-91755@svenskalag.se
+CREATED:20240830T082847Z
+DESCRIPTION:Samling: kl 15:00\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T082847Z
+LOCATION:Torslundahallen 
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - Linköping IBK Ungdom/Bergs IK
+  (Juniorallsvenskan F DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241031T200000
+DTEND;TZID=Europe/Stockholm:20241031T213000
+DTSTAMP:20241031T190000Z
+UID:cal16496330-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241024T200000
+DTEND;TZID=Europe/Stockholm:20241024T213000
+DTSTAMP:20241024T180000Z
+UID:cal16496329-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241019T153000
+DTEND;TZID=Europe/Stockholm:20241019T173000
+DTSTAMP:20241019T133000Z
+UID:cal16496060-91755@svenskalag.se
+CREATED:20240830T082847Z
+DESCRIPTION:Samling: kl 14:15\n\n\nMatchen hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T082847Z
+LOCATION:Ölands Bank Center A
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Match: FBC Kalmarsund - Fagerhult Habo IBK Ungdom
+  (Juniorallsvenskan F DJ18) // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=Europe/Stockholm:20241017T200000
+DTEND;TZID=Europe/Stockholm:20241017T213000
+DTSTAMP:20241017T180000Z
+UID:cal16496328-91755@svenskalag.se
+CREATED:20240830T085029Z
+DESCRIPTION:Samling: kl 20:00\n\n\nAktiviteten hämtad och synkas från
+  Svenskalag.se.\nwww.svenskalag.se/fbckalmarsund-djas
+LAST-MODIFIED:20240830T085029Z
+LOCATION:Torslundahallen
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Träning DJAS // DJAS - FBC Kalmarsund
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
