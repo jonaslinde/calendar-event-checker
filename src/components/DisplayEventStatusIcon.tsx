@@ -25,7 +25,7 @@ export function DisplayEventStatusIcon({
             return <CheckCircleIcon sx={{ color: '#4caf50', fontSize, ...defaultSx }} />;
         case "sameDay":
             return <WarningIcon sx={{ color: '#ff9800', fontSize, ...defaultSx }} />;
-        case "conflict":
+        case "overlapping":
             return <ErrorIcon sx={{ color: '#f44336', fontSize, ...defaultSx }} />;
         default:
             return <CheckCircleIcon sx={{ color: '#4caf50', fontSize, ...defaultSx }} />;

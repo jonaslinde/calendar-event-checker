@@ -9,14 +9,11 @@ import type { OptionCheckBoxProps } from "./DisplayEventsShowOptions"
 
 export type Props = {
     events: DisplayEvent[];
-    onShowConflictsOnly?: (showConflictsOnly: boolean) => void;
-    onMergeDuplicates?: (mergeDuplicates: boolean) => void;
+    onShowChange?: (show: DisplayEventStatus[]) => void;
+    onMergeChange?: (mergeDuplicates: boolean) => void;
 };
 
-export function DisplayEvents({ events, onShowConflictsOnly, onMergeDuplicates }: Props) {
-    // TODO #3: Integrate free days calculation - Uncomment and wire up free weekdays/holidays display options
-    // const [showFreeWeekdays, setshowFreeWeekdays] = useState(false);
-    // const [showFreeHolidays, setshowFreeHolidays] = useState(false);
+export function DisplayEvents({ events, onShowChange: onShowConflictsOnly, onMergeChange: onMergeDuplicates }: Props) {
     // TODO #1: Wire up conflict detection - Implement filtering logic when showConflictsOnly is true
     const [showConflictsOnly, setShowConflictsOnly] = useState(false);
     // TODO #2: Implement duplicate merging - Apply mergeByKey logic when mergeDuplicates is true
@@ -33,17 +30,6 @@ export function DisplayEvents({ events, onShowConflictsOnly, onMergeDuplicates }
     }
 
     const optionSettings: OptionCheckBoxProps[] = [
-        // TODO #3: Integrate free days calculation - Uncomment these options when implementing free days
-        // {
-        //     label: 'Visa lediga vardagar',
-        //     checked: showFreeWeekdays,
-        //     onChange: setshowFreeWeekdays
-        // },
-        // {
-        //     label: 'Visa lediga helgdagar',
-        //     checked: showFreeHolidays,
-        //     onChange: setshowFreeHolidays
-        // },
         {
             label: 'Visa bara konflikter',
             checked: showConflictsOnly,
@@ -62,9 +48,6 @@ export function DisplayEvents({ events, onShowConflictsOnly, onMergeDuplicates }
                 <DisplayEventsStatusBox events={events} />
                 <DisplayEventsShowOptions optionSettings={optionSettings} />
             </Box>
-            {/* TODO #1: Wire up conflict detection - Filter events based on showConflictsOnly state */}
-            {/* TODO #2: Implement duplicate merging - Apply mergeByKey when mergeDuplicates is true */}
-            {/* TODO #5: Integrate alternative views - Consider using DisplayEventTable or DisplayEventList components */}
             <BigCalendar events={events} agendaLength={90} />
         </Box>
     );

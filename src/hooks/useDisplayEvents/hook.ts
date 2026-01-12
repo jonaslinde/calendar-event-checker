@@ -1,55 +1,50 @@
 import { useState, useMemo } from 'react';
-import { mergeByKey, setEventStatuses, compareDisplayEvents } from './utils';
-import type { DisplayEvent, DisplayEventSortOrder, DisplayEventSortField } from './types'
-
+import { setEventStatuses } from './utils';
+import type { DisplayEvent, DisplayEventStatus } from '.'
 
 export function useDisplayEvents() {
     const [displayEvents, setDisplayEvents] = useState<DisplayEvent[]>([]);
-    const [sortField, setSortField] = useState<DisplayEventSortField>('start');
-    const [sortOrder, setSortOrder] = useState<DisplayEventSortOrder>('asc');
-    const [includeFreeWeekdays, setIncludeFreeWeekdays] = useState(false);
-    const [includeFreeHolidays, setIncludeFreeHolidays] = useState(false);
-    const [merge, setMerge] = useState(false);
-    const [showOnly, setShowOnly] = useState<'all' | 'conflict' | 'sameDay' | 'not-ok'>('all');
-    // TODO #7: Add future events filter - Implement functionality to only show future events
+    const [mergeDuplicates, setMergeDuplicates] = useState(false);
+    const [show, setShow] = useState<DisplayEventStatus[]>([]);
+
+    const mergeByKey = (events: DisplayEvent[]): DisplayEvent[] => {
+        const map = new Map<string, DisplayEvent>();
+        for (const e of events) {
+            const key = eventKey(e);
+            const existing = map.get(key);
+            if (existing) {
+                const existingNames = new Set(existing.calendars.map(c => c.name));
+                for (const c of e.calendars) existingNames.add(c.name);
+                const mergedCalendars = Array.from(existingNames).map(name => {
+                    // keep first color we saw for that name
+                    const found = [...existing.calendars, ...e.calendars].find(c => c.name === name);
+                    return found ?? { name, color: '#999' };
+                });
+                map.set(key, { ...existing, status: 'ok', calendars: mergedCalendars });
+            } else {
+                map.set(key, e);
+            }
+        }
+        return [...map.values()];
+    };
 
     const processedEvents = useMemo(() => {
-        const merged = merge ? mergeByKey(displayEvents) : displayEvents;
-        const withStatus = setEventStatuses(merged);
+        const eventsWithStatus = setEventStatuses(displayEvents);
 
-        // 3) include synthetic free-days (optional)
-        //const withFree = addFreeDays(withStatus, includeFreeHolidays, includeFreeWeekdays);
+        const mergedEvents = mergeDuplicates ? mergeByKey(eventsWithStatus) : eventsWithStatus;
 
-        // 4) filter by status if requested
-        const filtered =
-            showOnly === 'all'
-                ? withStatus
-                : withStatus.filter(ev =>
-                    showOnly === 'not-ok' ? ev.status !== 'ok' : ev.status === showOnly
-                );
-        // Sort (non-mutating)
-        const sorted = [...filtered].sort((a, b) => compareDisplayEvents(a, b, sortField, sortOrder));
-
-        return sorted;
-    }, [displayEvents, merge, showOnly, sortField, sortOrder]);
+        return mergedEvents.filter(e =>
+            show.length === 0 ? true : show.includes(e.status)
+        );
+    }, [displayEvents, mergeDuplicates, show]);
 
     return {
         displayEvents: processedEvents,
-        // raw setter (if the caller wants to inject/replace base events)
         setDisplayEvents,
-        // sort controls
-        sortField,
-        setSortField,
-        sortOrder,
-        setSortOrder,
         // pipeline flags
-        merge,
-        setMerge,
-        includeFreeWeekdays,
-        setIncludeFreeWeekdays,
-        includeFreeHolidays,
-        setIncludeFreeHolidays,
-        showOnly,
-        setShowOnly,
+        mergeDuplicates,
+        setMergeDuplicates,
+        show,
+        setShow,
     };
 }

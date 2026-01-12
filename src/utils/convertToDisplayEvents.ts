@@ -1,8 +1,6 @@
 import type { CalendarType, CalendarEventType } from "../hooks/useCalendars"
 import type { DisplayEvent } from '../hooks/useDisplayEvents'
 
-// TODO #5: Integrate alternative views - This conversion utility exists but is not used in the main flow. 
-// Consider using this with DisplayEventTable/DisplayEventList components, or remove if not needed.
 // TODO #4: Fix event status assignment - Status is currently hardcoded to "ok", should receive computed status from setEventStatuses
 export function convertCalendarEvent(
     calendarEvent: CalendarEventType,

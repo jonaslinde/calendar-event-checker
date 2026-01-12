@@ -6,7 +6,7 @@ import { AgendaWithStatus } from "./AgendaWithStatus";
 import { sv } from 'date-fns/locale/sv';
 import { DisplayEventStatusIcon } from "./DisplayEventStatusIcon";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import type { DisplayEvent, DisplayEventStatus } from "../hooks/useDisplayEvents";
+import type { DisplayEvent } from "../hooks/useDisplayEvents";
 
 // ---- Localizer (date-fns + svenska) ----
 const locales = { sv };
@@ -123,7 +123,6 @@ export function BigCalendar({ events, agendaLength = 90 }: Props) {
     },
   }), [myEvent]);
 
-  //  const views = [Views.MONTH, Views.WEEK, Views.AGENDA];
   const views = {
     month: true,
     week: true,

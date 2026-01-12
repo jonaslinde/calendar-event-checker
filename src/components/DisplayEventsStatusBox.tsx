@@ -33,7 +33,7 @@ export function DisplayEventsStatusBox({ events }: Props) {
             )}
             {counts.conflict > 0 && (
                 <Typography variant="body2" color="error" sx={{ mt: 0.5 }}>
-                    <DisplayEventStatusIcon status="conflict" /> {counts["conflict"]} händelse(er) spelas samma tid och dag!
+                    <DisplayEventStatusIcon status="overlapping" /> {counts["conflict"]} händelse(er) spelas samma tid och dag!
                 </Typography>
             )}
         </Box>

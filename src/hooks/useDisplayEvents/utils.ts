@@ -1,4 +1,4 @@
-import type { DisplayEvent, DisplayEventSortOrder, DisplayEventSortField, DisplayEventStatus } from './index'
+import type { DisplayEvent, DisplayEventStatus } from './types'
 
 /** Locale-aware formatting helpers that accept Date or string */
 export function formatDate(value: Date | string) {
@@ -199,8 +199,8 @@ export function setEventStatuses(events: DisplayEvent[]): DisplayEvent[] {
             const b = updated[j];
 
             if (isOverlapping(a, b)) {
-                updated[i].status = 'conflict';
-                updated[j].status = 'conflict';
+                updated[i].status = 'overlapping';
+                updated[j].status = 'overlapping';
             } else if (isSameDay(a, b)) {
                 if (updated[i].status === 'ok') updated[i].status = 'sameDay';
                 if (updated[j].status === 'ok') updated[j].status = 'sameDay';
@@ -209,30 +209,3 @@ export function setEventStatuses(events: DisplayEvent[]): DisplayEvent[] {
     }
     return updated;
 }
-
-export const compareDisplayEvents = (
-    a: DisplayEvent,
-    b: DisplayEvent,
-    field: DisplayEventSortField,
-    order: DisplayEventSortOrder
-): number => {
-    let cmp = 0;
-
-    switch (field) {
-        case 'start':
-            cmp = a.start.getTime() - b.start.getTime();
-            break;
-        case 'end':
-            cmp = a.end.getTime() - b.end.getTime();
-            break;
-        case 'summary':
-            cmp = (a.summary || '').localeCompare(b.summary || '');
-            break;
-        case 'location':
-            cmp = (a.location || '').localeCompare(b.location || '');
-            break;
-        default:
-            cmp = 0;
-    }
-    return order === 'asc' ? cmp : -cmp;
-};
