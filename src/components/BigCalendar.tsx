@@ -129,6 +129,16 @@ export function BigCalendar({ events, agendaLength = 90 }: Props) {
     agenda: AgendaWithStatus,
   } as const;
   const style = { background: 'white' };
+  const dayStart = useMemo(() => {
+    const value = new Date();
+    value.setHours(9, 0, 0, 0);
+    return value;
+  }, []);
+  const dayEnd = useMemo(() => {
+    const value = new Date();
+    value.setHours(23, 0, 0, 0);
+    return value;
+  }, []);
 
   const containerHeight = view === "month" ? 700 : 1600;
 
@@ -149,6 +159,9 @@ export function BigCalendar({ events, agendaLength = 90 }: Props) {
         views={views}
         date={date}
         onNavigate={setDate}
+        min={dayStart}
+        max={dayEnd}
+        scrollToTime={dayStart}
         messages={messages}
         popup
         selectable
