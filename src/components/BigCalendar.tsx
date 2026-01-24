@@ -130,8 +130,10 @@ export function BigCalendar({ events, agendaLength = 90 }: Props) {
   } as const;
   const style = { background: 'white' };
 
+  const containerHeight = view === "month" ? 700 : 1600;
+
   return (
-    <div style={{ height: 1600 }}>
+    <div style={{ height: containerHeight }}>
       <Calendar
         localizer={localizer}
         events={events}
