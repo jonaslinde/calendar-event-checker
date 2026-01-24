@@ -41,6 +41,11 @@ The project is NOT intended to:
 - `setX` is preferred setter naming for state; event data uses `CalendarEventType` and `DisplayEvent` models.
 - Run ESLint before pushing and follow its autofix suggestions when applicable.
 
+## Documentation Guidelines
+
+- Keep Markdown files updated when behavior or user flows change.
+- Lint Markdown changes with `npm run lint:md` (uses `markdownlint-cli`).
+
 ## Testing Guidelines
 
 - Vitest is the test runner (`vitest.config.ts`). Tests live adjacent to the units they cover.
