@@ -10,6 +10,8 @@ export function useCalendars() {
   const [calendars, setCalendars] = useState<CalendarType[]>(() => loadCalendarsFromLocalStorage(STORAGE_KEY));
   const [error, setError] = useState<string | null>(null);
   const colors = useMemo(() => [
+    '#000000', // Svart
+    '#ffffff', // Vit
     '#1976d2', // Blå
     '#388e3c', // Grön
     '#f57c00', // Orange

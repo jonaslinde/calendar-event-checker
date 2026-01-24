@@ -41,6 +41,8 @@ stay aligned as the app evolves.
 - It should be possible to create, update and remove calendars.
 - Each calendar should have a color.
 - The following colors should always be easily selected (pre-defined):
+  - #000000 (black)
+  - #ffffff (white)
   - #1976d2 (blue)
   - #388e3c (green)
   - #f57c00 (orange)
