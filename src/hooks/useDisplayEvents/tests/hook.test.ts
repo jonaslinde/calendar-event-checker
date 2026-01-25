@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { useDisplayEvents } from '../hook';
 import type { DisplayEvent } from '../types';
 
@@ -27,21 +27,20 @@ describe('useDisplayEvents', () => {
         });
         it('does not merge by default', () => {
             const { result } = renderHook(() => useDisplayEvents());
-            const t = new Date('2025-01-01T10:00:00Z');
             act(() => {
                 result.current.setDisplayEvents([
                     ev({
                         summary: 'Match',
                         location: 'Arena',
-                        start: t,
-                        end: new Date(t.getTime() + 3600000),
+                        start: new Date('2025-01-01T10:00:00Z'),
+                        end: new Date('2025-01-01T11:00:00Z'),
                         calendars: [{ name: 'A', color: '#000' }],
                     }),
                     ev({
                         summary: 'Match',
                         location: 'Arena',
-                        start: t,
-                        end: new Date(t.getTime() + 3600000),
+                        start: new Date('2025-01-01T10:00:00Z'),
+                        end: new Date('2025-01-01T11:00:00Z'),
                         calendars: [{ name: 'B', color: '#111' }],
                     }),
                 ]);
@@ -60,7 +59,6 @@ describe('useDisplayEvents', () => {
 
         it('merges when set', () => {
             const { result } = renderHook(() => useDisplayEvents());
-            const t = new Date('2025-01-01T10:00:00Z');
 
             act(() => {
                 result.current.setDisplayEvents([

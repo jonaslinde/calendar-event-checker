@@ -1,7 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 
-import { generateDateRange, getEarliestDate, getLatestDate } from "./../utils";
-import type { DisplayEvent } from '../types';
+import { generateDateRange } from "./../utils";
 
 describe("generateDateRange", () => {
     it("handles start after end", () => {

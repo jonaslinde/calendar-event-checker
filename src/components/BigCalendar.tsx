@@ -11,7 +11,7 @@ import type { DisplayEvent } from "../hooks/useDisplayEvents";
 // ---- Localizer (date-fns + svenska) ----
 const locales = { sv };
 const localizer = dateFnsLocalizer({
-  format: (date: Date, fmt: string, options?: FormatOptions) => format(date, fmt, { ...(options as any), locale: sv }),
+  format: (date: Date, fmt: string, options?: FormatOptions) => format(date, fmt, { ...(options ?? {}), locale: sv }),
   parse: (value: string, fmt: string) => parse(value as string, fmt, new Date(), { locale: sv }),
   startOfWeek: () => startOfWeek(new Date(), { locale: sv }),
   getDay,

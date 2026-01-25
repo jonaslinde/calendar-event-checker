@@ -84,16 +84,24 @@ export function loadCalendarsFromLocalStorage(key: string): CalendarType[] {
         if (!Array.isArray(parsed)) return [];
 
         // Reviva start/end till Date
-        const revived = (parsed as any[]).map(cal => ({
-            ...cal,
-            events: Array.isArray(cal.events)
-                ? cal.events.map((ev: any) => ({
-                    ...ev,
-                    start: ev.start ? new Date(ev.start) : new Date(NaN),
-                    end: ev.end ? new Date(ev.end) : new Date(NaN),
-                }))
-                : [],
-        })) as CalendarType[];
+        const revived = parsed.map((cal) => {
+            const calendar = cal as Record<string, unknown>;
+            const rawEvents = calendar.events;
+            const events = Array.isArray(rawEvents)
+                ? rawEvents.map((ev) => {
+                    const event = ev as Record<string, unknown>;
+                    return {
+                        ...event,
+                        start: event.start ? new Date(event.start as string | number | Date) : new Date(NaN),
+                        end: event.end ? new Date(event.end as string | number | Date) : new Date(NaN),
+                    };
+                })
+                : [];
+            return {
+                ...calendar,
+                events,
+            } as CalendarType;
+        });
 
         // Minimal validering
         return revived.filter(c => typeof c.name === 'string' && Array.isArray(c.events));
@@ -107,7 +115,7 @@ export function parseIcsToCalendar(ics: string, fallbackName: string, id: number
     const jcalData = safeParseIcs(ics);
     const comp = new ical.Component(jcalData);
     const name = getNameFromComponent(comp, fallbackName);
-    const vevents = comp.getAllSubcomponents('vevent') as any[];
+    const vevents = comp.getAllSubcomponents('vevent') as ical.Component[];
     const visible = true;
     const events: CalendarEventType[] = vevents.map((vevent) => {
         const e = new ical.Event(vevent);

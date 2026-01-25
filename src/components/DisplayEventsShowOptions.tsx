@@ -6,8 +6,7 @@ export interface Props {
 export interface OptionCheckBoxProps {
     checked: boolean,
     label: string,
-    onShowChange?: (newValue: boolean) => void
-    onMergeChange?: (newValue: boolean) => void
+    onChange: (newValue: boolean) => void
 }
 export const OptionCheckBox = ({ checked, label, onChange }: OptionCheckBoxProps) => {
     return (
@@ -62,7 +61,14 @@ export function DisplayEventsShowOptions({ optionSettings = [] }: Props) {
             <FormControl>
                 <FormLabel>Dubbletter:</FormLabel>
                 <FormGroup>
-                    {optionSettings.map(({ checked, label, onChange }, idx) => (<OptionCheckBox checked={checked} label={label} onChange={onChange} key={'option-' + idx} />))}
+                    {optionSettings.map(({ checked, label, onChange }, idx) => (
+                        <OptionCheckBox
+                            checked={checked}
+                            label={label}
+                            onChange={onChange}
+                            key={'option-' + idx}
+                        />
+                    ))}
                 </FormGroup>
             </FormControl>
         </>

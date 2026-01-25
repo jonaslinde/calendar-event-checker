@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import { DisplayEventsStatusBox } from "./DisplayEventsStatusBox";
 import { DisplayEventsShowOptions } from "./DisplayEventsShowOptions";
 import { BigCalendar } from './BigCalendar';
-import type { DisplayEvent } from '../hooks/useDisplayEvents';
+import type { DisplayEvent, DisplayEventStatus } from '../hooks/useDisplayEvents';
 
 import type { OptionCheckBoxProps } from "./DisplayEventsShowOptions"
 
@@ -13,20 +13,18 @@ export type Props = {
     onMergeChange?: (mergeDuplicates: boolean) => void;
 };
 
-export function DisplayEvents({ events, onShowChange: onShowConflictsOnly, onMergeChange: onMergeDuplicates }: Props) {
-    // TODO #1: Wire up conflict detection - Implement filtering logic when showConflictsOnly is true
+export function DisplayEvents({ events, onShowChange, onMergeChange }: Props) {
     const [showConflictsOnly, setShowConflictsOnly] = useState(false);
-    // TODO #2: Implement duplicate merging - Apply mergeByKey logic when mergeDuplicates is true
     const [mergeDuplicates, setMergeDuplicates] = useState(false);
 
     const handleShowConflictsOnly = (value: boolean) => {
         setShowConflictsOnly(value);
-        onShowConflictsOnly?.(value);
+        onShowChange?.(value ? ['overlapping', 'sameDay'] : []);
     };
 
     const handleMergeDuplicates = (value: boolean) => {
         setMergeDuplicates(value);
-        onMergeDuplicates?.(value);
+        onMergeChange?.(value);
     }
 
     const optionSettings: OptionCheckBoxProps[] = [

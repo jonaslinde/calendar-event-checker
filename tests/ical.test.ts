@@ -1,6 +1,6 @@
 import ical from 'ical.js';
 
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 
 describe('iCal.js tests', () => {
     it("parse returns empty array", () => {
@@ -53,7 +53,6 @@ describe('iCal.js tests', () => {
         expect(jcal).toEqual(expected);
     })
     it("something", () => {
-        const jcal = ical.parse('')
         expect(true).toBe(true);
     })
 })

@@ -7,9 +7,10 @@ import { Calendars } from './components/Calendars';
 import { DisplayEvents } from './components/DisplayEvents';
 import { convertAll as toDisplayEvents } from './utils/convertToDisplayEvents';
 import { useDisplayEvents } from './hooks/useDisplayEvents';
+import type { DisplayEventStatus } from './hooks/useDisplayEvents';
 
 function App() {
-  const { displayEvents, setDisplayEvents, setShow } = useDisplayEvents();
+  const { displayEvents, setDisplayEvents, setShow, setMergeDuplicates } = useDisplayEvents();
 
   const handleCalendarsUpdate = useCallback(
     (calendars: CalendarType[]) => {
@@ -19,12 +20,16 @@ function App() {
     [setDisplayEvents]
   );
 
-  const handleShowConflictsOnly = useCallback(
-    (value: boolean) => {
-      setShow(value ? 'conflict' : 'all');
+  const handleShowChange = useCallback(
+    (statuses: DisplayEventStatus[]) => {
+      setShow(statuses);
     },
     [setShow]
   );
+
+  const handleMergeDuplicates = (value: boolean) => {
+    setMergeDuplicates(value);
+  };
 
   return (
     <Box
@@ -55,7 +60,8 @@ function App() {
           <Calendars onUpdate={handleCalendarsUpdate} />
           <DisplayEvents
             events={displayEvents}
-            onShowChange={handleShowConflictsOnly}
+            onShowChange={handleShowChange}
+            onMergeChange={handleMergeDuplicates}
           />
         </Paper>
       </Container>

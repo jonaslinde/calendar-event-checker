@@ -73,6 +73,30 @@ const eventKey = (e: DisplayEvent) => {
     ].join('|');
 };
 
+const mergeStatus = (left: DisplayEventStatus, right: DisplayEventStatus): DisplayEventStatus => {
+    if (left === 'overlapping' || right === 'overlapping') return 'overlapping';
+    if (left === 'sameDay' || right === 'sameDay') return 'sameDay';
+    if (left === 'merged' || right === 'merged') return 'merged';
+    if (left === 'duplicate' || right === 'duplicate') return 'merged';
+    return left;
+};
+
+/** Mark duplicates by (start,end,summary,location) without merging */
+export const markDuplicates = (events: DisplayEvent[]): DisplayEvent[] => {
+    const counts = new Map<string, number>();
+    for (const e of events) {
+        const key = eventKey(e);
+        counts.set(key, (counts.get(key) ?? 0) + 1);
+    }
+    return events.map(e => {
+        const key = eventKey(e);
+        if ((counts.get(key) ?? 0) > 1 && e.status === 'ok') {
+            return { ...e, status: 'duplicate' };
+        }
+        return e;
+    });
+};
+
 /** Merge duplicates by (start,end,summary,location) and union calendar *names* */
 export const mergeByKey = (events: DisplayEvent[]): DisplayEvent[] => {
     const map = new Map<string, DisplayEvent>();
@@ -87,7 +111,11 @@ export const mergeByKey = (events: DisplayEvent[]): DisplayEvent[] => {
                 const found = [...existing.calendars, ...e.calendars].find(c => c.name === name);
                 return found ?? { name, color: '#999' };
             });
-            map.set(key, { ...existing, status: 'ok', calendars: mergedCalendars });
+            map.set(key, {
+                ...existing,
+                status: mergeStatus(existing.status, e.status),
+                calendars: mergedCalendars
+            });
         } else {
             map.set(key, e);
         }

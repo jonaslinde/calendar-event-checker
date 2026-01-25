@@ -13,7 +13,7 @@ const getStatusCounters = (events: DisplayEvent[]) => {
             acc[status] += 1;
             return acc;
         },
-        { ok: 0, conflict: 0, sameDay: 0 } as Record<DisplayEventStatus, number>
+        { ok: 0, overlapping: 0, sameDay: 0, duplicate: 0, merged: 0 } as Record<DisplayEventStatus, number>
     );
 };
 
@@ -31,9 +31,19 @@ export function DisplayEventsStatusBox({ events }: Props) {
                     <DisplayEventStatusIcon status="sameDay" /> {counts.sameDay} händelse(er) spelas samma dag men inte samma tid!
                 </Typography>
             )}
-            {counts.conflict > 0 && (
+            {counts.overlapping > 0 && (
                 <Typography variant="body2" color="error" sx={{ mt: 0.5 }}>
-                    <DisplayEventStatusIcon status="overlapping" /> {counts["conflict"]} händelse(er) spelas samma tid och dag!
+                    <DisplayEventStatusIcon status="overlapping" /> {counts.overlapping} händelse(er) spelas samma tid och dag!
+                </Typography>
+            )}
+            {counts.duplicate > 0 && (
+                <Typography variant="body2" color="warning" sx={{ mt: 0.5 }}>
+                    <DisplayEventStatusIcon status="duplicate" /> {counts.duplicate} händelse(er) är dubbletter!
+                </Typography>
+            )}
+            {counts.merged > 0 && (
+                <Typography variant="body2" color="info" sx={{ mt: 0.5 }}>
+                    <DisplayEventStatusIcon status="merged" /> {counts.merged} händelse(er) är sammanslagna!
                 </Typography>
             )}
         </Box>

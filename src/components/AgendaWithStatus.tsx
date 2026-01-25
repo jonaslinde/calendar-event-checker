@@ -5,18 +5,32 @@ import type { DisplayEvent } from "../hooks/useDisplayEvents";
 import { DisplayEventStatusIcon } from "./DisplayEventStatusIcon";
 
 // En liten hjälptyp för RBC custom view props (vi håller den enkel)
+type AgendaComponents = {
+    event?: (props: { event: DisplayEvent }) => JSX.Element;
+};
+
 type AgendaWithStatusProps = {
     events: DisplayEvent[];
     date: Date;
     length?: number;
-    components?: any; // react-big-calendar's components bag
+    components?: AgendaComponents; // react-big-calendar's components bag
+};
+
+type AgendaRangeOptions = {
+    length?: number;
+};
+
+type AgendaWithStatusComponent = ((props: AgendaWithStatusProps) => JSX.Element) & {
+    range: (date: Date, options: AgendaRangeOptions) => Date[];
+    navigate: (date: Date, action: "PREV" | "NEXT" | "DATE", options: AgendaRangeOptions) => Date;
+    title: (date: Date, options: AgendaRangeOptions) => string;
 };
 
 /**
  * Custom Agenda view with an extra "Status" column.
  * Built-in Agenda has fixed columns, so we render our own table.
  */
-export const AgendaWithStatus: any = (props: AgendaWithStatusProps) => {
+export const AgendaWithStatus = ((props: AgendaWithStatusProps) => {
     const { events, date, length = 30, components } = props;
 
     const rangeStart = startOfDay(date);
@@ -57,7 +71,7 @@ export const AgendaWithStatus: any = (props: AgendaWithStatusProps) => {
                             ? "Heldag"
                             : `${format(start, "HH:mm", { locale: sv })} – ${format(end, "HH:mm", { locale: sv })}`;
                         return (
-                            <tr key={`${(event as any).id ?? event.title ?? ""}-${idx}`} className="rbc-agenda-row">
+                            <tr key={`${event.title ?? ""}-${idx}`} className="rbc-agenda-row">
                                 <td className="rbc-agenda-date-cell">{day}</td>
                                 <td className="rbc-agenda-time-cell">{time}</td>
                                 <td className="rbc-agenda-event-cell">
@@ -75,16 +89,16 @@ export const AgendaWithStatus: any = (props: AgendaWithStatusProps) => {
             </table>
         </div>
     );
-};
+}) as AgendaWithStatusComponent;
 
 // RBC kräver dessa statics för custom views
-AgendaWithStatus.range = (date: Date, { length = 30 }: any) => {
+AgendaWithStatus.range = (date: Date, { length = 30 }: AgendaRangeOptions) => {
     const start = startOfDay(date);
     const end = addDays(start, length);
     return [start, end];
 };
 
-AgendaWithStatus.navigate = (date: Date, action: "PREV" | "NEXT" | "DATE", { length = 30 }: any) => {
+AgendaWithStatus.navigate = (date: Date, action: "PREV" | "NEXT" | "DATE", { length = 30 }: AgendaRangeOptions) => {
     switch (action) {
         case "PREV":
             return addDays(date, -length);
@@ -95,7 +109,7 @@ AgendaWithStatus.navigate = (date: Date, action: "PREV" | "NEXT" | "DATE", { len
     }
 };
 
-AgendaWithStatus.title = (date: Date, { length = 30 }: any) => {
+AgendaWithStatus.title = (date: Date, { length = 30 }: AgendaRangeOptions) => {
     const start = startOfDay(date);
     const end = addDays(start, length - 1);
     return `${format(start, "yyyy-MM-dd", { locale: sv })} – ${format(end, "yyyy-MM-dd", { locale: sv })}`;
