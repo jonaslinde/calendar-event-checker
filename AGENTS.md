@@ -51,6 +51,12 @@ The project is NOT intended to:
 - Vitest is the test runner (`vitest.config.ts`). Tests live adjacent to the units they cover.
 - File names end with `.test.ts`/`.test.tsx`; describe states clearly (e.g., `hook.test.ts` for hook behavior).
 - Run `npm run test` locally; include only the relevant test files in changes.
+- For new features or behavior changes, add or update unit tests alongside the code changes.
+- PR test checklist:
+  - Add or update unit tests for new behavior.
+  - Run `npm run test` for the touched areas.
+  - Note any manual testing steps in the PR description.
+- Lint and fix code changes before PRs (run `npm run lint` and apply autofixes when available).
 
 ## Commit & Pull Request Guidelines
 
