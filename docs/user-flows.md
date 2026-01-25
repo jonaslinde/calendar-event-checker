@@ -133,3 +133,14 @@ stay aligned as the app evolves.
 - User can import calendars without confusion.
 - Conflicts/overlaps are visible within seconds after import.
 - Filters reduce noise without hiding critical conflicts.
+
+## TODOs (gaps to close)
+
+- Wire up conflict/duplicate detection and merge toggle end-to-end.
+- Add calendar color picker (not just auto-assigned colors).
+- Implement a list view with sortable columns (date, time, name, status).
+- Add manual event create/update/delete UI (hooks exist but no UI yet).
+- Add filters for event status and name with actual filtering logic.
+- Implement calendar visibility toggles and filtering in overview.
+- Align status model/labels across UI and logic (overlapping/sameDay/duplicate/merged).
+- Decide whether CSV/Excel import should be supported; if yes, implement parsing/validation + UI.
