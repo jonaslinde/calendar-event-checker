@@ -1,133 +1,155 @@
-import { useState } from 'react';
-import { Typography, Box, Button, Chip, Stack, TextField, IconButton } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-// TODO #6: Implement calendar visibility toggle - Use CalendarType.visible property to filter calendars from display
-// import VisibleIcon from "@mui/icons-material/Visibility";
-// import VisibleOffIcon from "@mui/icons-material/VisibilityOff"
-
+import { Box, Typography } from '@mui/material';
+import { useEffect, useMemo, useState } from 'react';
 
 import type { CalendarType } from "./../hooks/useCalendars";
+import type { CalendarEventType } from "./../hooks/useCalendars";
+import { CalendarDetailsPanel } from "./CalendarDetailsPanel";
+import { CalendarList } from "./CalendarList";
 
 export interface Props {
     calendars: CalendarType[]
     onUpdateCalendar: (name: string, updatedCalendar: CalendarType) => (void)
     onDeleteCalendar: (name: string) => (void)
+    onAddEvent: (calendarName: string, newEvent: CalendarEventType) => void
+    onUpdateEvent: (calendarName: string, eventIndex: number, updatedEvent: Partial<CalendarEventType>) => void
+    onDeleteEvent: (calendarName: string, eventIndex: number) => void
 }
 
-export function CalendarBox({ calendars, onUpdateCalendar, onDeleteCalendar }: Props) {
-    const [editingCalendar, setEditingCalendar] = useState<string | null>(null);
-    const [newCalendarName, setNewCalendarName] = useState('');
-    const handleSaveCalendarName = (oldName: string, newName: string) => {
-        const next = newName.trim();
-        if (!next || next === oldName) { setEditingCalendar(null); return; }
-        if (calendars.some(c => c.name === next)) { setEditingCalendar(null); return; }
+const toInputValue = (date: Date) => {
+    const pad = (value: number) => value.toString().padStart(2, '0');
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+};
 
-        const calendar = calendars.find(cal => cal.name === oldName);
-        if (calendar) {
-            const updatedCalendar = {
-                ...calendar,
-                name: next,
-                events: calendar.events.map(event => ({ ...event, calendarName: next }))
-            };
-            onUpdateCalendar(oldName, updatedCalendar);
-        }
-        setEditingCalendar(null);
+const fromInputValue = (value: string) => new Date(value);
+
+export function CalendarBox({
+    calendars,
+    onUpdateCalendar,
+    onDeleteCalendar,
+    onAddEvent,
+    onUpdateEvent,
+    onDeleteEvent,
+}: Props) {
+    const [activeCalendarName, setActiveCalendarName] = useState<string | null>(null);
+    const activeCalendar = useMemo(
+        () => calendars.find((cal) => cal.name === activeCalendarName) ?? null,
+        [activeCalendarName, calendars]
+    );
+
+    const [draftName, setDraftName] = useState('');
+    const [addSummary, setAddSummary] = useState('');
+    const [addStart, setAddStart] = useState('');
+    const [addEnd, setAddEnd] = useState('');
+    const [editingEventIndex, setEditingEventIndex] = useState<number | null>(null);
+    const [editSummary, setEditSummary] = useState('');
+    const [editStart, setEditStart] = useState('');
+    const [editEnd, setEditEnd] = useState('');
+
+    useEffect(() => {
+        if (!activeCalendar) return;
+        setDraftName(activeCalendar.name);
+    }, [activeCalendar]);
+
+    useEffect(() => {
+        if (editingEventIndex === null || !activeCalendar) return;
+        const ev = activeCalendar.events[editingEventIndex];
+        if (!ev) return;
+        setEditSummary(ev.summary);
+        setEditStart(toInputValue(ev.start));
+        setEditEnd(toInputValue(ev.end));
+    }, [activeCalendar, editingEventIndex]);
+
+    const handleSaveCalendar = () => {
+        if (!activeCalendar) return;
+        const next = draftName.trim();
+        if (!next || next === activeCalendar.name) return;
+        if (calendars.some((c) => c.name === next)) return;
+
+        const updatedCalendar = {
+            ...activeCalendar,
+            name: next,
+            events: activeCalendar.events.map(event => ({ ...event, name: next })),
+        };
+        onUpdateCalendar(activeCalendar.name, updatedCalendar);
+        setActiveCalendarName(next);
     };
-    const handleEditCalendar = (calendarName: string) => {
-        setEditingCalendar(calendarName);
-        setNewCalendarName(calendarName);
+
+    const handleToggleVisibility = (calendar: CalendarType) => {
+        onUpdateCalendar(calendar.name, { ...calendar, visible: !calendar.visible });
+    };
+
+    const handleColorChange = (calendar: CalendarType, next: string) => {
+        if (next === calendar.color) return;
+        onUpdateCalendar(calendar.name, { ...calendar, color: next });
+    };
+
+    const handleAddEvent = () => {
+        if (!activeCalendar) return;
+        const summary = addSummary.trim();
+        if (!summary || !addStart || !addEnd) return;
+        onAddEvent(activeCalendar.name, {
+            summary,
+            description: "",
+            location: "",
+            start: fromInputValue(addStart),
+            end: fromInputValue(addEnd),
+            name: activeCalendar.name,
+        });
+        setAddSummary('');
+        setAddStart('');
+        setAddEnd('');
+    };
+
+    const handleSaveEvent = (eventIndex: number) => {
+        if (!activeCalendar) return;
+        onUpdateEvent(activeCalendar.name, eventIndex, {
+            summary: editSummary.trim(),
+            start: fromInputValue(editStart),
+            end: fromInputValue(editEnd),
+        });
+        setEditingEventIndex(null);
     };
 
     return (
         calendars.length > 0 && (
             <Box mt={4}>
                 <Typography variant="h5" gutterBottom align="center" sx={{ mb: 3 }}>Kalendrar</Typography>
-                <Stack direction="row" spacing={1} flexWrap="wrap" justifyContent="center">
-                    {calendars.map((cal) => (
-                        <Box key={cal.id} sx={{ m: 0.5, display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                            {editingCalendar === cal.name ? (
-                                <Box display="flex" alignItems="center" gap={1}>
-                                    <TextField
-                                        autoFocus
-                                        value={newCalendarName}
-                                        onChange={(e) => setNewCalendarName(e.target.value)}
-                                        onKeyDown={(e) => {
-                                            if (e.key === 'Enter') handleSaveCalendarName(cal.name, newCalendarName);
-                                            if (e.key === 'Escape') setEditingCalendar(null);
-                                        }}
-                                        size="small"
-                                        variant="outlined"
-                                        sx={{ '& .MuiOutlinedInput-root': { backgroundColor: 'white', color: 'black' } }}
-                                    />
-                                    <Button
-                                        size="small"
-                                        variant="contained"
-                                        onClick={() => handleSaveCalendarName(cal.name, newCalendarName)}
-                                        sx={{ minWidth: 'auto', px: 1 }}
-                                    >
-                                        Spara
-                                    </Button>
-                                    <Button
-                                        size="small"
-                                        variant="outlined"
-                                        onClick={() => setEditingCalendar(null)}
-                                        sx={{ minWidth: 'auto', px: 1 }}
-                                    >
-                                        Avbryt
-                                    </Button>
-                                </Box>
-                            ) : (
-                                <>
-                                    <Chip
-                                        label={cal.name}
-                                        onDelete={() => onDeleteCalendar(cal.name)}
-                                        deleteIcon={<DeleteIcon />}
-                                        sx={{
-                                            backgroundColor: cal.color,
-                                            color: 'white',
-                                            '& .MuiChip-deleteIcon': {
-                                                color: 'white',
-                                                '&:hover': {
-                                                    color: 'rgba(255, 255, 255, 0.7)',
-                                                },
-                                            },
-                                        }}
-                                    />
-                                    <TextField
-                                        type="color"
-                                        size="small"
-                                        value={cal.color}
-                                        onChange={(e) => {
-                                            const next = e.target.value;
-                                            if (next === cal.color) return;
-                                            onUpdateCalendar(cal.name, { ...cal, color: next });
-                                        }}
-                                        inputProps={{ "aria-label": `Kalenderfarg ${cal.name}` }}
-                                        sx={{
-                                            width: 48,
-                                            '& .MuiOutlinedInput-root': { p: 0, minWidth: 0 },
-                                            '& input': { padding: 0, height: 32 },
-                                        }}
-                                    />
-                                    <IconButton
-                                        size="small"
-                                        onClick={() => handleEditCalendar(cal.name)}
-                                        sx={{
-                                            color: cal.color,
-                                            backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                                            '&:hover': {
-                                                backgroundColor: 'white',
-                                            }
-                                        }}
-                                    >
-                                        <EditIcon fontSize="small" />
-                                    </IconButton>
-                                </>
-                            )}
-                        </Box>
-                    ))}
-                </Stack>
+                <CalendarList
+                    calendars={calendars}
+                    onToggleVisibility={handleToggleVisibility}
+                    onEdit={(calendar) => setActiveCalendarName(calendar.name)}
+                    onDelete={(calendar) => onDeleteCalendar(calendar.name)}
+                />
+
+                {activeCalendar && (
+                    <CalendarDetailsPanel
+                        calendar={activeCalendar}
+                        draftName={draftName}
+                        onDraftNameChange={setDraftName}
+                        onSaveCalendar={handleSaveCalendar}
+                        onClose={() => setActiveCalendarName(null)}
+                        onColorChange={(value) => handleColorChange(activeCalendar, value)}
+                        onToggleVisibility={() => handleToggleVisibility(activeCalendar)}
+                        addSummary={addSummary}
+                        addStart={addStart}
+                        addEnd={addEnd}
+                        onAddSummaryChange={setAddSummary}
+                        onAddStartChange={setAddStart}
+                        onAddEndChange={setAddEnd}
+                        onAddEvent={handleAddEvent}
+                        editingEventIndex={editingEventIndex}
+                        editSummary={editSummary}
+                        editStart={editStart}
+                        editEnd={editEnd}
+                        onEditEventStart={setEditingEventIndex}
+                        onEditSummaryChange={setEditSummary}
+                        onEditStartChange={setEditStart}
+                        onEditEndChange={setEditEnd}
+                        onSaveEvent={handleSaveEvent}
+                        onDeleteEvent={(index) => onDeleteEvent(activeCalendar.name, index)}
+                        formatDateTime={toInputValue}
+                    />
+                )}
             </Box>)
 
     )

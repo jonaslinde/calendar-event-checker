@@ -14,7 +14,11 @@ export function Calendars({ onUpdate }: Props) {
         calendars,
         addCalendarFromIcs,
         removeCalendar,
-        updateCalendar } = useCalendars();
+        updateCalendar,
+        addEvent,
+        updateEvent,
+        deleteEvent,
+    } = useCalendars();
 
 
     // TODO #6: Implement calendar visibility toggle - Filter calendars by visible property before passing to onUpdate
@@ -25,7 +29,14 @@ export function Calendars({ onUpdate }: Props) {
     return (
         <>
             <AddCalendars onNewIcsText={addCalendarFromIcs} />
-            <CalendarBox calendars={calendars} onDeleteCalendar={removeCalendar} onUpdateCalendar={updateCalendar} />
+            <CalendarBox
+                calendars={calendars}
+                onDeleteCalendar={removeCalendar}
+                onUpdateCalendar={updateCalendar}
+                onAddEvent={addEvent}
+                onUpdateEvent={updateEvent}
+                onDeleteEvent={deleteEvent}
+            />
         </>
     )
 }
