@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Box, Tabs, Tab } from '@mui/material';
+import { Box, Tab, Tabs } from '@mui/material';
 import { DisplayEventsStatusBox } from "./DisplayEventsStatusBox";
 import { DisplayEventsShowOptions } from "./DisplayEventsShowOptions";
 import { BigCalendar } from './BigCalendar';
 import { DisplayEventsList } from "./DisplayEventsList";
+import { AgendaDaysContext } from "./agendaDaysContext";
 import type { DisplayEvent, DisplayEventStatus } from '../hooks/useDisplayEvents';
 
 import type { OptionCheckBoxProps } from "./DisplayEventsShowOptions"
@@ -18,6 +19,7 @@ export function DisplayEvents({ events, onShowChange, onMergeChange }: Props) {
     const [showConflictsOnly, setShowConflictsOnly] = useState(false);
     const [mergeDuplicates, setMergeDuplicates] = useState(false);
     const [viewMode, setViewMode] = useState<"calendar" | "list">("calendar");
+    const [agendaDays, setAgendaDays] = useState(30);
 
     const handleShowConflictsOnly = (value: boolean) => {
         setShowConflictsOnly(value);
@@ -56,9 +58,11 @@ export function DisplayEvents({ events, onShowChange, onMergeChange }: Props) {
                 <DisplayEventsStatusBox events={events} />
                 <DisplayEventsShowOptions optionSettings={optionSettings} />
             </Box>
-            {viewMode === "list"
-                ? <DisplayEventsList events={events} />
-                : <BigCalendar events={events} agendaLength={90} />}
+            <AgendaDaysContext.Provider value={{ agendaDays, setAgendaDays }}>
+                {viewMode === "list"
+                    ? <DisplayEventsList events={events} />
+                    : <BigCalendar events={events} agendaLength={agendaDays} />}
+            </AgendaDaysContext.Provider>
         </Box>
     );
 }

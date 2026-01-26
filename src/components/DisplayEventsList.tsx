@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import {
   Box,
   Table,
@@ -7,12 +7,14 @@ import {
   TableHead,
   TableRow,
   TableSortLabel,
+  TextField,
 } from "@mui/material";
 import { addDays, startOfDay } from "date-fns";
 import type { DisplayEvent, DisplayEventStatus } from "../hooks/useDisplayEvents";
 import { formatDate, formatTime } from "../hooks/useDisplayEvents/utils";
 import { DisplayEventStatusIcon } from "./DisplayEventStatusIcon";
 import { CalendarChipList } from "./CalendarChipList";
+import { AgendaDaysContext } from "./agendaDaysContext";
 
 type SortKey = "date" | "time" | "name" | "status";
 type SortDirection = "asc" | "desc";
@@ -51,8 +53,17 @@ type DisplayEventsListComponent = ((props: DisplayEventsListProps) => JSX.Elemen
 };
 
 export const DisplayEventsList = (({ events, date, length = 30 }: DisplayEventsListProps) => {
+  const agendaContext = useContext(AgendaDaysContext);
+  const agendaDays = agendaContext?.agendaDays ?? length;
   const [sortKey, setSortKey] = useState<SortKey>("date");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
+
+  const handleAgendaDaysChange = (value: string) => {
+    if (!agendaContext) return;
+    const parsed = Number(value);
+    if (Number.isNaN(parsed)) return;
+    agendaContext.setAgendaDays(Math.max(1, Math.min(365, parsed)));
+  };
 
   const handleSort = (nextKey: SortKey) => {
     if (nextKey === sortKey) {
@@ -76,117 +87,133 @@ export const DisplayEventsList = (({ events, date, length = 30 }: DisplayEventsL
     const sorted = events
       .filter(inRange)
       .sort((a, b) => {
-      const aStart = a.start instanceof Date ? a.start : new Date(a.start);
-      const bStart = b.start instanceof Date ? b.start : new Date(b.start);
+        const aStart = a.start instanceof Date ? a.start : new Date(a.start);
+        const bStart = b.start instanceof Date ? b.start : new Date(b.start);
 
-      let cmp = 0;
-      switch (sortKey) {
-        case "date": {
+        let cmp = 0;
+        switch (sortKey) {
+          case "date": {
+            cmp = aStart.getTime() - bStart.getTime();
+            break;
+          }
+          case "time": {
+            cmp = getTimeOfDayValue(aStart) - getTimeOfDayValue(bStart);
+            if (cmp === 0) cmp = aStart.getTime() - bStart.getTime();
+            break;
+          }
+          case "name": {
+            cmp = compareStrings(a.title ?? "", b.title ?? "");
+            break;
+          }
+          case "status": {
+            const aStatus = a.status ?? "ok";
+            const bStatus = b.status ?? "ok";
+            cmp = statusOrder[aStatus] - statusOrder[bStatus];
+            break;
+          }
+          default:
+            cmp = 0;
+        }
+
+        if (cmp === 0) {
           cmp = aStart.getTime() - bStart.getTime();
-          break;
         }
-        case "time": {
-          cmp = getTimeOfDayValue(aStart) - getTimeOfDayValue(bStart);
-          if (cmp === 0) cmp = aStart.getTime() - bStart.getTime();
-          break;
-        }
-        case "name": {
-          cmp = compareStrings(a.title ?? "", b.title ?? "");
-          break;
-        }
-        case "status": {
-          const aStatus = a.status ?? "ok";
-          const bStatus = b.status ?? "ok";
-          cmp = statusOrder[aStatus] - statusOrder[bStatus];
-          break;
-        }
-        default:
-          cmp = 0;
-      }
 
-      if (cmp === 0) {
-        cmp = aStart.getTime() - bStart.getTime();
-      }
-
-      return sortDirection === "asc" ? cmp : -cmp;
+        return sortDirection === "asc" ? cmp : -cmp;
       });
 
     return sorted;
   }, [date, events, length, sortDirection, sortKey]);
 
   return (
-    <Box sx={{ maxWidth: "100%", overflowX: "auto" }}>
-      <Table
-        size="small"
-        aria-label="Lista med händelser"
-        sx={{ width: "100%", tableLayout: "fixed" }}
-      >
-        <TableHead>
-          <TableRow>
-            <TableCell sortDirection={sortKey === "date" ? sortDirection : false} sx={{ width: 120 }}>
-              <TableSortLabel
-                active={sortKey === "date"}
-                direction={sortKey === "date" ? sortDirection : "asc"}
-                onClick={() => handleSort("date")}
-              >
-                Datum
-              </TableSortLabel>
-            </TableCell>
-            <TableCell sortDirection={sortKey === "time" ? sortDirection : false} sx={{ width: 110 }}>
-              <TableSortLabel
-                active={sortKey === "time"}
-                direction={sortKey === "time" ? sortDirection : "asc"}
-                onClick={() => handleSort("time")}
-              >
-                Tid
-              </TableSortLabel>
-            </TableCell>
-            <TableCell sortDirection={sortKey === "name" ? sortDirection : false} sx={{ width: 200 }}>
-              <TableSortLabel
-                active={sortKey === "name"}
-                direction={sortKey === "name" ? sortDirection : "asc"}
-                onClick={() => handleSort("name")}
-              >
-                Namn
-              </TableSortLabel>
-            </TableCell>
-            <TableCell sortDirection={sortKey === "status" ? sortDirection : false} sx={{ width: 160 }}>
-              <TableSortLabel
-                active={sortKey === "status"}
-                direction={sortKey === "status" ? sortDirection : "asc"}
-                onClick={() => handleSort("status")}
-              >
-                Status
-              </TableSortLabel>
-            </TableCell>
-            <TableCell>Kalender</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {sortedEvents.map((event, idx) => {
-            const status = event.status ?? "ok";
-            const label = statusLabel[status];
-            return (
-              <TableRow key={`${event.title}-${idx}`} data-testid="event-row">
-                <TableCell data-testid="event-date">{formatDate(event.start)}</TableCell>
-                <TableCell data-testid="event-time">{formatTime(event.start)}</TableCell>
-                <TableCell
-                  data-testid="event-name"
-                  sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+    <Box sx={{ maxWidth: "100%" }}>
+      {agendaContext && (
+        <Box sx={{ mb: 2, display: "flex", justifyContent: "flex-start" }}>
+          <TextField
+            label="Dagar i agenda"
+            type="number"
+            value={agendaDays}
+            onChange={(e) => handleAgendaDaysChange(e.target.value)}
+            inputProps={{ min: 1, max: 365 }}
+            size="small"
+            InputLabelProps={{ shrink: true }}
+            sx={{ width: 120 }}
+          />
+        </Box>
+      )}
+      <Box sx={{ overflowX: "auto" }}>
+        <Table
+          size="small"
+          aria-label="Lista med händelser"
+          sx={{ width: "100%", tableLayout: "fixed" }}
+        >
+          <TableHead>
+            <TableRow>
+              <TableCell sortDirection={sortKey === "date" ? sortDirection : false} sx={{ width: 120 }}>
+                <TableSortLabel
+                  active={sortKey === "date"}
+                  direction={sortKey === "date" ? sortDirection : "asc"}
+                  onClick={() => handleSort("date")}
                 >
-                  {event.title}
-                </TableCell>
-                <TableCell data-testid="event-status">
-                  <DisplayEventStatusIcon status={status} /> {label}
-                </TableCell>
-                <TableCell data-testid="event-calendars">
-                  <CalendarChipList calendars={event.calendars} />
-                </TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
+                  Datum
+                </TableSortLabel>
+              </TableCell>
+              <TableCell sortDirection={sortKey === "time" ? sortDirection : false} sx={{ width: 110 }}>
+                <TableSortLabel
+                  active={sortKey === "time"}
+                  direction={sortKey === "time" ? sortDirection : "asc"}
+                  onClick={() => handleSort("time")}
+                >
+                  Tid
+                </TableSortLabel>
+              </TableCell>
+              <TableCell sortDirection={sortKey === "name" ? sortDirection : false} sx={{ width: 200 }}>
+                <TableSortLabel
+                  active={sortKey === "name"}
+                  direction={sortKey === "name" ? sortDirection : "asc"}
+                  onClick={() => handleSort("name")}
+                >
+                  Namn
+                </TableSortLabel>
+              </TableCell>
+              <TableCell sortDirection={sortKey === "status" ? sortDirection : false} sx={{ width: 160 }}>
+                <TableSortLabel
+                  active={sortKey === "status"}
+                  direction={sortKey === "status" ? sortDirection : "asc"}
+                  onClick={() => handleSort("status")}
+                >
+                  Status
+                </TableSortLabel>
+              </TableCell>
+              <TableCell>Kalender</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {sortedEvents.map((event, idx) => {
+              const status = event.status ?? "ok";
+              const label = statusLabel[status];
+              return (
+                <TableRow key={`${event.title}-${idx}`} data-testid="event-row">
+                  <TableCell data-testid="event-date">{formatDate(event.start)}</TableCell>
+                  <TableCell data-testid="event-time">{formatTime(event.start)}</TableCell>
+                  <TableCell
+                    data-testid="event-name"
+                    sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+                  >
+                    {event.title}
+                  </TableCell>
+                  <TableCell data-testid="event-status">
+                    <DisplayEventStatusIcon status={status} /> {label}
+                  </TableCell>
+                  <TableCell data-testid="event-calendars">
+                    <CalendarChipList calendars={event.calendars} />
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </Box>
     </Box>
   );
 }) as DisplayEventsListComponent;
