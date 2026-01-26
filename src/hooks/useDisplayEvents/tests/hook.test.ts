@@ -107,4 +107,20 @@ describe('useDisplayEvents', () => {
         });
     });
 
+    describe('Name filter', () => {
+        it('filters by title or summary', () => {
+            const { result } = renderHook(() => useDisplayEvents());
+            act(() => {
+                result.current.setDisplayEvents([
+                    ev({ title: 'Match A', summary: 'Match A' }),
+                    ev({ title: 'Träning B', summary: 'Träning B' }),
+                ]);
+                result.current.setNameFilter('match');
+            });
+
+            expect(result.current.displayEvents).toHaveLength(1);
+            expect(result.current.displayEvents[0].title).toBe('Match A');
+        });
+    });
+
 });

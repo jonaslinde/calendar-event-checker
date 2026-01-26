@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Box, Tab, Tabs } from '@mui/material';
+import { Box, Tab, Tabs, TextField } from '@mui/material';
 import { DisplayEventsStatusBox } from "./DisplayEventsStatusBox";
 import { DisplayEventsShowOptions } from "./DisplayEventsShowOptions";
 import { BigCalendar } from './BigCalendar';
@@ -13,14 +13,16 @@ export type Props = {
     events: DisplayEvent[];
     onShowChange?: (show: DisplayEventStatus[]) => void;
     onMergeChange?: (mergeDuplicates: boolean) => void;
+    onNameFilterChange?: (value: string) => void;
 };
 
-export function DisplayEvents({ events, onShowChange, onMergeChange }: Props) {
+export function DisplayEvents({ events, onShowChange, onMergeChange, onNameFilterChange }: Props) {
     const [showConflictsOnly, setShowConflictsOnly] = useState(false);
     const [statusFilters, setStatusFilters] = useState<DisplayEventStatus[]>([]);
     const [mergeDuplicates, setMergeDuplicates] = useState(false);
     const [viewMode, setViewMode] = useState<"calendar" | "list">("calendar");
     const [agendaDays, setAgendaDays] = useState(30);
+    const [nameFilter, setNameFilter] = useState("");
 
     const handleShowConflictsOnly = (value: boolean) => {
         setShowConflictsOnly(value);
@@ -48,6 +50,10 @@ export function DisplayEvents({ events, onShowChange, onMergeChange }: Props) {
     useEffect(() => {
         onShowChange?.(statusFilters);
     }, [onShowChange, statusFilters]);
+
+    useEffect(() => {
+        onNameFilterChange?.(nameFilter.trim());
+    }, [nameFilter, onNameFilterChange]);
 
     const statusOptions: OptionCheckBoxProps[] = [
         {
@@ -108,6 +114,15 @@ export function DisplayEvents({ events, onShowChange, onMergeChange }: Props) {
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
                 <DisplayEventsStatusBox events={events} />
                 <DisplayEventsShowOptions statusOptions={statusOptions} mergeOptions={mergeOptions} />
+            </Box>
+            <Box mb={2} maxWidth={360}>
+                <TextField
+                    label="Filtrera på namn"
+                    value={nameFilter}
+                    onChange={(e) => setNameFilter(e.target.value)}
+                    fullWidth
+                    size="small"
+                />
             </Box>
             <AgendaDaysContext.Provider value={{ agendaDays, setAgendaDays }}>
                 {viewMode === "list"

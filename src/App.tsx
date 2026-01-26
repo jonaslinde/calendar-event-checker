@@ -10,7 +10,7 @@ import { useDisplayEvents } from './hooks/useDisplayEvents';
 import type { DisplayEventStatus } from './hooks/useDisplayEvents';
 
 function App() {
-  const { displayEvents, setDisplayEvents, setShow, setMergeDuplicates } = useDisplayEvents();
+  const { displayEvents, setDisplayEvents, setShow, setMergeDuplicates, setNameFilter } = useDisplayEvents();
 
   const handleCalendarsUpdate = useCallback(
     (calendars: CalendarType[]) => {
@@ -30,6 +30,13 @@ function App() {
   const handleMergeDuplicates = (value: boolean) => {
     setMergeDuplicates(value);
   };
+
+  const handleNameFilterChange = useCallback(
+    (value: string) => {
+      setNameFilter(value);
+    },
+    [setNameFilter]
+  );
 
   return (
     <Box
@@ -62,6 +69,7 @@ function App() {
             events={displayEvents}
             onShowChange={handleShowChange}
             onMergeChange={handleMergeDuplicates}
+            onNameFilterChange={handleNameFilterChange}
           />
         </Paper>
       </Container>
