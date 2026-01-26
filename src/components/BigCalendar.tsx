@@ -2,9 +2,9 @@
 import { useState, useMemo, useCallback } from 'react';
 import { Calendar, dateFnsLocalizer, type View } from 'react-big-calendar';
 import { format, parse, startOfWeek, getDay, type FormatOptions, isWeekend } from 'date-fns';
-import { AgendaWithStatus } from "./AgendaWithStatus";
 import { sv } from 'date-fns/locale/sv';
 import { DisplayEventStatusIcon } from "./DisplayEventStatusIcon";
+import { DisplayEventsList } from "./DisplayEventsList";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import type { DisplayEvent } from "../hooks/useDisplayEvents";
 
@@ -126,7 +126,7 @@ export function BigCalendar({ events, agendaLength = 90 }: Props) {
   const views = {
     month: true,
     week: true,
-    agenda: AgendaWithStatus,
+    agenda: DisplayEventsList,
   } as const;
   const style = { background: 'white' };
   const dayStart = useMemo(() => {
