@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
 import {
+  Chip,
+  Stack,
   Table,
   TableBody,
   TableCell,
@@ -35,6 +37,7 @@ const compareStrings = (left: string, right: string) =>
   left.localeCompare(right, "sv-SE", { sensitivity: "base" });
 
 const getTimeOfDayValue = (date: Date) => date.getHours() * 60 + date.getMinutes();
+const isWhite = (color: string) => color.toLowerCase() === "#ffffff";
 
 export type DisplayEventsListProps = {
   events: DisplayEvent[];
@@ -152,6 +155,7 @@ export const DisplayEventsList = (({ events, date, length = 30 }: DisplayEventsL
               Status
             </TableSortLabel>
           </TableCell>
+          <TableCell>Kalender</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -165,6 +169,26 @@ export const DisplayEventsList = (({ events, date, length = 30 }: DisplayEventsL
               <TableCell data-testid="event-name">{event.title}</TableCell>
               <TableCell data-testid="event-status">
                 <DisplayEventStatusIcon status={status} /> {label}
+              </TableCell>
+              <TableCell data-testid="event-calendars">
+                <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap">
+                  {event.calendars.map((calendar) => {
+                    const textColor = isWhite(calendar.color) ? "#000000" : "#ffffff";
+                    const borderColor = isWhite(calendar.color) ? "#cfcfcf" : calendar.color;
+                    return (
+                      <Chip
+                        key={calendar.name}
+                        label={calendar.name}
+                        size="small"
+                        sx={{
+                          backgroundColor: calendar.color,
+                          color: textColor,
+                          border: `1px solid ${borderColor}`,
+                        }}
+                      />
+                    );
+                  })}
+                </Stack>
               </TableCell>
             </TableRow>
           );

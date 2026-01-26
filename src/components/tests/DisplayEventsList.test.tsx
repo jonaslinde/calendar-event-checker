@@ -77,4 +77,21 @@ describe("DisplayEventsList", () => {
     const names = screen.getAllByTestId("event-name").map((cell) => cell.textContent);
     expect(names).toEqual(["Inside"]);
   });
+
+  it("shows all calendar names for merged events", () => {
+    const events: DisplayEvent[] = [
+      ev({
+        title: "Merged",
+        calendars: [
+          { name: "Cal A", color: "#1976d2" },
+          { name: "Cal B", color: "#ffffff" },
+        ],
+      }),
+    ];
+
+    render(<DisplayEventsList events={events} />);
+
+    expect(screen.getByText("Cal A")).toBeInTheDocument();
+    expect(screen.getByText("Cal B")).toBeInTheDocument();
+  });
 });
