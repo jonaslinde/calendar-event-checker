@@ -1,7 +1,8 @@
 import { FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox, FormHelperText } from '@mui/material';
 
 export interface Props {
-    optionSettings: OptionCheckBoxProps[];
+    statusOptions: OptionCheckBoxProps[];
+    mergeOptions: OptionCheckBoxProps[];
 }
 export interface OptionCheckBoxProps {
     checked: boolean,
@@ -19,49 +20,27 @@ export const OptionCheckBox = ({ checked, label, onChange }: OptionCheckBoxProps
         />
     );
 }
-export function DisplayEventsShowOptions({ optionSettings = [] }: Props) {
+export function DisplayEventsShowOptions({ statusOptions = [], mergeOptions = [] }: Props) {
     return (
         <>
             <FormControl>
                 <FormLabel>Visa status:</FormLabel>
-                <FormGroup >
-                    <FormControlLabel
-                        control={<Checkbox defaultChecked />}
-                        label='Alla'
-                        sx={{ ml: 1 }}
-                    />
-                    <FormControlLabel
-                        control={<Checkbox />}
-                        label='Ok'
-                        sx={{ ml: 1 }}
-                    />
-                    <FormControlLabel
-                        control={<Checkbox />}
-                        label='Överlappande'
-                        sx={{ ml: 1 }}
-                    />
-                    <FormControlLabel
-                        control={<Checkbox />}
-                        label='Samma dag'
-                        sx={{ ml: 1 }}
-                    />
-                    <FormControlLabel
-                        control={<Checkbox />}
-                        label='Dubletter'
-                        sx={{ ml: 1 }}
-                    />
-                    <FormControlLabel
-                        control={<Checkbox />}
-                        label='Sammanslagna'
-                        sx={{ ml: 1 }}
-                    />
+                <FormGroup>
+                    {statusOptions.map(({ checked, label, onChange }, idx) => (
+                        <OptionCheckBox
+                            checked={checked}
+                            label={label}
+                            onChange={onChange}
+                            key={`status-${idx}`}
+                        />
+                    ))}
                 </FormGroup>
-                <FormHelperText>Be careful</FormHelperText>
+                <FormHelperText>Välj en eller flera statusar</FormHelperText>
             </FormControl>
             <FormControl>
                 <FormLabel>Dubbletter:</FormLabel>
                 <FormGroup>
-                    {optionSettings.map(({ checked, label, onChange }, idx) => (
+                    {mergeOptions.map(({ checked, label, onChange }, idx) => (
                         <OptionCheckBox
                             checked={checked}
                             label={label}

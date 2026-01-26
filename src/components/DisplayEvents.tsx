@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Tab, Tabs } from '@mui/material';
 import { DisplayEventsStatusBox } from "./DisplayEventsStatusBox";
 import { DisplayEventsShowOptions } from "./DisplayEventsShowOptions";
@@ -17,13 +17,14 @@ export type Props = {
 
 export function DisplayEvents({ events, onShowChange, onMergeChange }: Props) {
     const [showConflictsOnly, setShowConflictsOnly] = useState(false);
+    const [statusFilters, setStatusFilters] = useState<DisplayEventStatus[]>([]);
     const [mergeDuplicates, setMergeDuplicates] = useState(false);
     const [viewMode, setViewMode] = useState<"calendar" | "list">("calendar");
     const [agendaDays, setAgendaDays] = useState(30);
 
     const handleShowConflictsOnly = (value: boolean) => {
         setShowConflictsOnly(value);
-        onShowChange?.(value ? ['overlapping', 'sameDay'] : []);
+        setStatusFilters(value ? ['overlapping', 'sameDay'] : []);
     };
 
     const handleMergeDuplicates = (value: boolean) => {
@@ -31,7 +32,57 @@ export function DisplayEvents({ events, onShowChange, onMergeChange }: Props) {
         onMergeChange?.(value);
     }
 
-    const optionSettings: OptionCheckBoxProps[] = [
+    const toggleStatus = (status: DisplayEventStatus) => {
+        setShowConflictsOnly(false);
+        setStatusFilters((prev) =>
+            prev.includes(status) ? prev.filter((s) => s !== status) : [...prev, status]
+        );
+    };
+
+    const handleSelectAll = (checked: boolean) => {
+        if (!checked) return;
+        setShowConflictsOnly(false);
+        setStatusFilters([]);
+    };
+
+    useEffect(() => {
+        onShowChange?.(statusFilters);
+    }, [onShowChange, statusFilters]);
+
+    const statusOptions: OptionCheckBoxProps[] = [
+        {
+            label: 'Alla',
+            checked: statusFilters.length === 0,
+            onChange: handleSelectAll
+        },
+        {
+            label: 'Ok',
+            checked: statusFilters.includes('ok'),
+            onChange: () => toggleStatus('ok')
+        },
+        {
+            label: 'Överlappande',
+            checked: statusFilters.includes('overlapping'),
+            onChange: () => toggleStatus('overlapping')
+        },
+        {
+            label: 'Samma dag',
+            checked: statusFilters.includes('sameDay'),
+            onChange: () => toggleStatus('sameDay')
+        },
+        {
+            label: 'Dubletter',
+            checked: statusFilters.includes('duplicate'),
+            onChange: () => toggleStatus('duplicate')
+        },
+        {
+            label: 'Sammanslagna',
+            checked: statusFilters.includes('merged'),
+            onChange: () => toggleStatus('merged')
+        },
+    ];
+
+    const mergeOptions: OptionCheckBoxProps[] = [
         {
             label: 'Visa bara konflikter',
             checked: showConflictsOnly,
@@ -56,7 +107,7 @@ export function DisplayEvents({ events, onShowChange, onMergeChange }: Props) {
             </Tabs>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
                 <DisplayEventsStatusBox events={events} />
-                <DisplayEventsShowOptions optionSettings={optionSettings} />
+                <DisplayEventsShowOptions statusOptions={statusOptions} mergeOptions={mergeOptions} />
             </Box>
             <AgendaDaysContext.Provider value={{ agendaDays, setAgendaDays }}>
                 {viewMode === "list"
