@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import {
+  Box,
   Table,
   TableBody,
   TableCell,
@@ -114,68 +115,79 @@ export const DisplayEventsList = (({ events, date, length = 30 }: DisplayEventsL
   }, [date, events, length, sortDirection, sortKey]);
 
   return (
-    <Table size="small" aria-label="Lista med händelser">
-      <TableHead>
-        <TableRow>
-          <TableCell sortDirection={sortKey === "date" ? sortDirection : false}>
-            <TableSortLabel
-              active={sortKey === "date"}
-              direction={sortKey === "date" ? sortDirection : "asc"}
-              onClick={() => handleSort("date")}
-            >
-              Datum
-            </TableSortLabel>
-          </TableCell>
-          <TableCell sortDirection={sortKey === "time" ? sortDirection : false}>
-            <TableSortLabel
-              active={sortKey === "time"}
-              direction={sortKey === "time" ? sortDirection : "asc"}
-              onClick={() => handleSort("time")}
-            >
-              Tid
-            </TableSortLabel>
-          </TableCell>
-          <TableCell sortDirection={sortKey === "name" ? sortDirection : false}>
-            <TableSortLabel
-              active={sortKey === "name"}
-              direction={sortKey === "name" ? sortDirection : "asc"}
-              onClick={() => handleSort("name")}
-            >
-              Namn
-            </TableSortLabel>
-          </TableCell>
-          <TableCell sortDirection={sortKey === "status" ? sortDirection : false}>
-            <TableSortLabel
-              active={sortKey === "status"}
-              direction={sortKey === "status" ? sortDirection : "asc"}
-              onClick={() => handleSort("status")}
-            >
-              Status
-            </TableSortLabel>
-          </TableCell>
-          <TableCell>Kalender</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {sortedEvents.map((event, idx) => {
-          const status = event.status ?? "ok";
-          const label = statusLabel[status];
-          return (
-            <TableRow key={`${event.title}-${idx}`} data-testid="event-row">
-              <TableCell data-testid="event-date">{formatDate(event.start)}</TableCell>
-              <TableCell data-testid="event-time">{formatTime(event.start)}</TableCell>
-              <TableCell data-testid="event-name">{event.title}</TableCell>
-              <TableCell data-testid="event-status">
-                <DisplayEventStatusIcon status={status} /> {label}
-              </TableCell>
-              <TableCell data-testid="event-calendars">
-                <CalendarChipList calendars={event.calendars} />
-              </TableCell>
-            </TableRow>
-          );
-        })}
-      </TableBody>
-    </Table>
+    <Box sx={{ maxWidth: "100%", overflowX: "auto" }}>
+      <Table
+        size="small"
+        aria-label="Lista med händelser"
+        sx={{ width: "100%", tableLayout: "fixed" }}
+      >
+        <TableHead>
+          <TableRow>
+            <TableCell sortDirection={sortKey === "date" ? sortDirection : false} sx={{ width: 120 }}>
+              <TableSortLabel
+                active={sortKey === "date"}
+                direction={sortKey === "date" ? sortDirection : "asc"}
+                onClick={() => handleSort("date")}
+              >
+                Datum
+              </TableSortLabel>
+            </TableCell>
+            <TableCell sortDirection={sortKey === "time" ? sortDirection : false} sx={{ width: 110 }}>
+              <TableSortLabel
+                active={sortKey === "time"}
+                direction={sortKey === "time" ? sortDirection : "asc"}
+                onClick={() => handleSort("time")}
+              >
+                Tid
+              </TableSortLabel>
+            </TableCell>
+            <TableCell sortDirection={sortKey === "name" ? sortDirection : false} sx={{ width: 200 }}>
+              <TableSortLabel
+                active={sortKey === "name"}
+                direction={sortKey === "name" ? sortDirection : "asc"}
+                onClick={() => handleSort("name")}
+              >
+                Namn
+              </TableSortLabel>
+            </TableCell>
+            <TableCell sortDirection={sortKey === "status" ? sortDirection : false} sx={{ width: 160 }}>
+              <TableSortLabel
+                active={sortKey === "status"}
+                direction={sortKey === "status" ? sortDirection : "asc"}
+                onClick={() => handleSort("status")}
+              >
+                Status
+              </TableSortLabel>
+            </TableCell>
+            <TableCell>Kalender</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {sortedEvents.map((event, idx) => {
+            const status = event.status ?? "ok";
+            const label = statusLabel[status];
+            return (
+              <TableRow key={`${event.title}-${idx}`} data-testid="event-row">
+                <TableCell data-testid="event-date">{formatDate(event.start)}</TableCell>
+                <TableCell data-testid="event-time">{formatTime(event.start)}</TableCell>
+                <TableCell
+                  data-testid="event-name"
+                  sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+                >
+                  {event.title}
+                </TableCell>
+                <TableCell data-testid="event-status">
+                  <DisplayEventStatusIcon status={status} /> {label}
+                </TableCell>
+                <TableCell data-testid="event-calendars">
+                  <CalendarChipList calendars={event.calendars} />
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </Box>
   );
 }) as DisplayEventsListComponent;
 
