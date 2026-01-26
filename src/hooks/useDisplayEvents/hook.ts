@@ -8,9 +8,9 @@ export function useDisplayEvents() {
     const [show, setShow] = useState<DisplayEventStatus[]>([]);
 
     const processedEvents = useMemo(() => {
-        const eventsWithStatus = setEventStatuses(displayEvents);
-        const withDuplicates = markDuplicates(eventsWithStatus);
-        const mergedEvents = mergeDuplicates ? mergeByKey(withDuplicates) : withDuplicates;
+        const withDuplicates = markDuplicates(displayEvents);
+        const eventsWithStatus = setEventStatuses(withDuplicates);
+        const mergedEvents = mergeDuplicates ? mergeByKey(eventsWithStatus) : eventsWithStatus;
 
         return mergedEvents.filter(e =>
             show.length === 0 ? true : show.includes(e.status)

@@ -78,4 +78,33 @@ describe('useDisplayEvents', () => {
         });
     });
 
+    describe('Duplicates vs overlaps', () => {
+        it('keeps duplicate status when events are identical', () => {
+            const { result } = renderHook(() => useDisplayEvents());
+            const t = new Date('2025-01-01T10:00:00Z');
+
+            act(() => {
+                result.current.setDisplayEvents([
+                    ev({
+                        summary: 'Match',
+                        location: 'Arena',
+                        start: t,
+                        end: new Date(t.getTime() + 3600000),
+                        calendars: [{ name: 'A', color: '#000' }],
+                    }),
+                    ev({
+                        summary: 'Match',
+                        location: 'Arena',
+                        start: t,
+                        end: new Date(t.getTime() + 3600000),
+                        calendars: [{ name: 'B', color: '#111' }],
+                    }),
+                ]);
+            });
+
+            const statuses = result.current.displayEvents.map((event) => event.status);
+            expect(statuses).toEqual(['duplicate', 'duplicate']);
+        });
+    });
+
 });

@@ -217,8 +217,8 @@ export const getFreeDays = (
 
 // TODO #1 & #4: Wire up conflict detection and fix event status assignment - This function exists and is now called in App.tsx
 export function setEventStatuses(events: DisplayEvent[]): DisplayEvent[] {
-    // 1) Start with all "ok"
-    const updated = events.map(ev => ({ ...ev, status: 'ok' as DisplayEventStatus }));
+    // Preserve existing statuses (e.g., duplicate/merged) and only set if currently ok.
+    const updated = events.map(ev => ({ ...ev, status: ev.status ?? 'ok' as DisplayEventStatus }));
 
     // 2) Compare pairs only within the same calendar day for speed (optional micro-opt)
     for (let i = 0; i < updated.length; i++) {
@@ -227,8 +227,8 @@ export function setEventStatuses(events: DisplayEvent[]): DisplayEvent[] {
             const b = updated[j];
 
             if (isOverlapping(a, b)) {
-                updated[i].status = 'overlapping';
-                updated[j].status = 'overlapping';
+                if (updated[i].status === 'ok') updated[i].status = 'overlapping';
+                if (updated[j].status === 'ok') updated[j].status = 'overlapping';
             } else if (isSameDay(a, b)) {
                 if (updated[i].status === 'ok') updated[i].status = 'sameDay';
                 if (updated[j].status === 'ok') updated[j].status = 'sameDay';
