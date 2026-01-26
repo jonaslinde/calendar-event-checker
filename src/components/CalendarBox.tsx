@@ -94,6 +94,22 @@ export function CalendarBox({ calendars, onUpdateCalendar, onDeleteCalendar }: P
                                             },
                                         }}
                                     />
+                                    <TextField
+                                        type="color"
+                                        size="small"
+                                        value={cal.color}
+                                        onChange={(e) => {
+                                            const next = e.target.value;
+                                            if (next === cal.color) return;
+                                            onUpdateCalendar(cal.name, { ...cal, color: next });
+                                        }}
+                                        inputProps={{ "aria-label": `Kalenderfarg ${cal.name}` }}
+                                        sx={{
+                                            width: 48,
+                                            '& .MuiOutlinedInput-root': { p: 0, minWidth: 0 },
+                                            '& input': { padding: 0, height: 32 },
+                                        }}
+                                    />
                                     <IconButton
                                         size="small"
                                         onClick={() => handleEditCalendar(cal.name)}
