@@ -6,6 +6,10 @@ export interface Props {
 }
 
 export function CalendarChip({ label, color }: Props) {
+    const isWhite = color.toLowerCase() === "#ffffff";
+    const textColor = isWhite ? "#000000" : "#ffffff";
+    const borderColor = isWhite ? "#cfcfcf" : color;
+
     return (
         <Chip
             component="span"
@@ -13,7 +17,8 @@ export function CalendarChip({ label, color }: Props) {
             size="small"
             sx={{
                 backgroundColor: color,
-                color: 'white',
+                color: textColor,
+                border: `1px solid ${borderColor}`,
             }}
         />
     )
