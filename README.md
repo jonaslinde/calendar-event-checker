@@ -1,6 +1,8 @@
 
 # Exampel links to ics calendars
 
+[![Deploy to GitHub Pages](https://github.com/jonaslinde/calendar-event-checker/actions/workflows/deploy.yml/badge.svg)](https://github.com/jonaslinde/calendar-event-checker/actions/workflows/deploy.yml)
+
 ## Ibis
 | Lag | Serie | Id | Kalender link |
 |---|---|---|---|
@@ -42,3 +44,15 @@
 * [IK Stanstad Dam A](https://ikstanstad.web.sportadmin.se/start/?ID=103171)
 * [IK Stanstad F08/09](https://ikstanstad.web.sportadmin.se/start/?ID=119117)
 * [IK Stanstad F10/11](https://ikstanstad.web.sportadmin.se/start/?ID=228248)
+
+## Deploy (GitHub Pages)
+
+This project is configured to deploy to GitHub Pages via GitHub Actions.
+
+1) Push to `main`.
+2) Wait for the "Deploy to GitHub Pages" workflow to finish.
+3) The site will be available at:
+   - `https://<github-username>.github.io/calendar-event-checker/`
+
+Notes:
+- `vite.config.ts` sets `base` to `/calendar-event-checker/` for correct asset paths.
