@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from "react";
+import { useContext, useMemo, useState, type ReactElement } from "react";
 import {
   Box,
   Table,
@@ -10,6 +10,7 @@ import {
   TextField,
 } from "@mui/material";
 import { addDays, startOfDay } from "date-fns";
+import type { NavigateAction, TitleOptions, ViewStatic } from "react-big-calendar";
 import type { DisplayEvent, DisplayEventStatus } from "../hooks/useDisplayEvents";
 import { formatDate, formatTime } from "../hooks/useDisplayEvents/utils";
 import { DisplayEventStatusIcon } from "./DisplayEventStatusIcon";
@@ -46,10 +47,8 @@ export type DisplayEventsListProps = {
   length?: number;
 };
 
-type DisplayEventsListComponent = ((props: DisplayEventsListProps) => JSX.Element) & {
+type DisplayEventsListComponent = ((props: DisplayEventsListProps) => ReactElement) & ViewStatic & {
   range: (date: Date, options: { length?: number }) => Date[];
-  navigate: (date: Date, action: "PREV" | "NEXT" | "DATE", options: { length?: number }) => Date;
-  title: (date: Date, options: { length?: number }) => string;
 };
 
 export const DisplayEventsList = (({ events, date, length = 30 }: DisplayEventsListProps) => {
@@ -226,7 +225,7 @@ DisplayEventsList.range = (date: Date, { length = 30 }: { length?: number }) => 
 
 DisplayEventsList.navigate = (
   date: Date,
-  action: "PREV" | "NEXT" | "DATE",
+  action: NavigateAction,
   { length = 30 }: { length?: number }
 ) => {
   switch (action) {
@@ -239,7 +238,8 @@ DisplayEventsList.navigate = (
   }
 };
 
-DisplayEventsList.title = (date: Date, { length = 30 }: { length?: number }) => {
+DisplayEventsList.title = (date: Date, options: TitleOptions) => {
+  const length = (options as { length?: number }).length ?? 30;
   const start = startOfDay(date);
   const end = addDays(start, length - 1);
   return `${formatDate(start)} – ${formatDate(end)}`;

@@ -1,12 +1,14 @@
 // src/components/AgendaWithStatus.tsx
 import { format, addDays, startOfDay } from "date-fns";
+import type { ReactElement } from "react";
+import type { NavigateAction, TitleOptions, ViewStatic } from "react-big-calendar";
 import { sv } from "date-fns/locale/sv";
 import type { DisplayEvent } from "../hooks/useDisplayEvents";
 import { DisplayEventStatusIcon } from "./DisplayEventStatusIcon";
 
 // En liten hjälptyp för RBC custom view props (vi håller den enkel)
 type AgendaComponents = {
-    event?: (props: { event: DisplayEvent }) => JSX.Element;
+    event?: (props: { event: DisplayEvent }) => ReactElement;
 };
 
 type AgendaWithStatusProps = {
@@ -20,10 +22,8 @@ type AgendaRangeOptions = {
     length?: number;
 };
 
-type AgendaWithStatusComponent = ((props: AgendaWithStatusProps) => JSX.Element) & {
+type AgendaWithStatusComponent = ((props: AgendaWithStatusProps) => ReactElement) & ViewStatic & {
     range: (date: Date, options: AgendaRangeOptions) => Date[];
-    navigate: (date: Date, action: "PREV" | "NEXT" | "DATE", options: AgendaRangeOptions) => Date;
-    title: (date: Date, options: AgendaRangeOptions) => string;
 };
 
 /**
@@ -98,7 +98,7 @@ AgendaWithStatus.range = (date: Date, { length = 30 }: AgendaRangeOptions) => {
     return [start, end];
 };
 
-AgendaWithStatus.navigate = (date: Date, action: "PREV" | "NEXT" | "DATE", { length = 30 }: AgendaRangeOptions) => {
+AgendaWithStatus.navigate = (date: Date, action: NavigateAction, { length = 30 }: AgendaRangeOptions) => {
     switch (action) {
         case "PREV":
             return addDays(date, -length);
@@ -109,7 +109,8 @@ AgendaWithStatus.navigate = (date: Date, action: "PREV" | "NEXT" | "DATE", { len
     }
 };
 
-AgendaWithStatus.title = (date: Date, { length = 30 }: AgendaRangeOptions) => {
+AgendaWithStatus.title = (date: Date, options: TitleOptions) => {
+    const length = (options as AgendaRangeOptions).length ?? 30;
     const start = startOfDay(date);
     const end = addDays(start, length - 1);
     return `${format(start, "yyyy-MM-dd", { locale: sv })} – ${format(end, "yyyy-MM-dd", { locale: sv })}`;

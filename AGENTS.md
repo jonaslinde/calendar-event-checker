@@ -57,7 +57,7 @@ The project is NOT intended to:
   - Run `npm run test` for the touched areas.
   - Note any manual testing steps in the PR description.
 - Lint and fix code changes before PRs (run `npm run lint` and apply autofixes when available).
-- After any code or documentation change, re-run both `npm run lint` and `npm run test`.
+- After any code or documentation change, re-run `npm run lint`, `npm run test`, and `npm run build` (or use `npm run verify`).
 - Use a TDD flow for new features: write a failing test first that captures the intended behavior, then implement the code to make it pass.
 - Prefer tests that start at the user-interaction level (component/integration) before adding smaller unit tests.
 - Follow SOLID principles when designing new code (single responsibility, open/closed, Liskov, interface segregation, dependency inversion).

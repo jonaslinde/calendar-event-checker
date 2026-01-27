@@ -18,7 +18,6 @@ export function convertCalendarEvent(
         description: calendarEvent.description,
         location: calendarEvent.location,
         calendars: [{ name: calendar.name, color: calendar.color }],
-        type: 'event',
         status: 'ok',
     };
 }

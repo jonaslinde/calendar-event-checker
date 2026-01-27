@@ -12,10 +12,14 @@ export interface OptionCheckBoxProps {
 export const OptionCheckBox = ({ checked, label, onChange }: OptionCheckBoxProps) => {
     return (
         <FormControlLabel
-            control={<Checkbox />}
+            control={
+                <Checkbox
+                    checked={checked}
+                    onChange={(_event, value) => onChange(value)}
+                />
+            }
             checked={checked}
             label={label}
-            onChange={(e) => onChange(e.target.checked)}
             sx={{ ml: 1 }}
         />
     );
