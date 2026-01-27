@@ -52,7 +52,7 @@ This project is configured to deploy to GitHub Pages via GitHub Actions.
 1) Push to `main`.
 2) Wait for the "Deploy to GitHub Pages" workflow to finish.
 3) The site will be available at:
-   - `https://<github-username>.github.io/calendar-event-checker/`
+   - `https://jonaslinde.github.io/calendar-event-checker/`
 
 Notes:
 - `vite.config.ts` sets `base` to `/calendar-event-checker/` for correct asset paths.
