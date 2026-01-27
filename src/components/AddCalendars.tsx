@@ -10,7 +10,6 @@ import {
     Select,
     MenuItem,
     FormControl,
-    InputLabel,
 } from '@mui/material';
 import type {
     SelectChangeEvent
@@ -162,12 +161,12 @@ export function AddCalendars({ onNewIcsText }: Props) {
             {tabValue === 2 && ( // Lägg till kalender via url
                 <Box display="flex" flexDirection="column" gap={3} sx={{ py: 2 }}>
                     <FormControl fullWidth>
-                        <InputLabel id="recent-urls-label">Senaste länkar</InputLabel>
+                        <Typography variant="caption" color="text.secondary" sx={{ mb: 0.5 }}>
+                            Senaste länkar
+                        </Typography>
                         <Select
-                            labelId="recent-urls-label"
                             value={icsUrl}
                             onChange={handleSelectedUrlChange}
-                            label="Senaste länkar"
                             displayEmpty
                             renderValue={(val) => val || 'Välj en tidigare länk'}
                         >
